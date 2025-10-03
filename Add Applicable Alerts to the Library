@@ -7,9 +7,8 @@
     <!-- Load Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* Custom Regology Purple Theme */
         .regology-purple {
-            background-color: #6A1B9A; /* Deep Purple */
+            background-color: #6A1B9A;
             color: white;
         }
         .regology-border {
@@ -24,9 +23,8 @@
             font-weight: 700;
         }
         .alert-box {
-            border-left: 4px solid #FBC02D; /* Amber for warning/note */
+            border-left: 4px solid #FBC02D;
         }
-        /* Styling for embedded screenshots */
         .screenshot {
             width: 100%;
             max-width: 600px;
@@ -46,7 +44,7 @@
         <!-- Header -->
         <header class="regology-purple p-4 sm:p-6">
             <h1 class="text-2xl sm:text-3xl font-bold">Coinbase Regology Training</h1>
-            <h2 class="text-sm sm:text-md opacity-90 mt-1">Adding Applicable Alerts to the Library &mdash; July 29, 2025</h2>
+            <h2 class="text-sm sm:text-md opacity-90 mt-1">Adding Applicable Alerts to the Library </h2>
         </header>
 
         <!-- Content Area -->
@@ -57,7 +55,7 @@
         </main>
 
         <!-- Navigation Footer -->
-        <footer class="p-4 sm:p-6 border-t border-gray-200 flex justify-between">
+        <footer id="nav-footer" class="p-4 sm:p-6 border-t border-gray-200 flex justify-between">
             <button id="prev-btn" onclick="prevStep()" class="bg-gray-300 text-gray-800 px-4 py-2 rounded-lg font-medium shadow hover:bg-gray-400 transition" disabled>
                 &larr; Previous
             </button>
@@ -80,11 +78,8 @@
 
     <script>
         let currentStep = 0;
-        
-        // Define the deep purple color for dynamic use
         const PURPLE_COLOR = '#6A1B9A';
 
-        // Helper function to show the modal
         function showModal(title, body) {
             document.getElementById('modal-title').textContent = title;
             document.getElementById('modal-body').innerHTML = body;
@@ -92,26 +87,23 @@
             document.getElementById('modal').classList.add('flex');
         }
 
-        // Helper function to close the modal
         function closeModal() {
             document.getElementById('modal').classList.remove('flex');
             document.getElementById('modal').classList.add('hidden');
-            // Check if closing the modal should enable navigation (e.g., after an essential interaction)
             if (steps[currentStep].interactionRequired) {
                 document.getElementById('next-btn').disabled = false;
                 document.getElementById('next-btn').classList.remove('bg-gray-300', 'text-gray-800');
                 document.getElementById('next-btn').classList.add('regology-purple');
-                steps[currentStep].interactionRequired = false; // Mark interaction as complete
+                steps[currentStep].interactionRequired = false;
             }
         }
 
         const steps = [
-            // Step 0: Introduction
             {
                 title: "Welcome to the Guide",
                 content: `
                     <h3 class="text-3xl font-extrabold mb-6 regology-text">Coinbase Regology Training</h3>
-                    <p class="text-lg mb-4">This guide will walk you through the new functionality for adding **Applicable Alerts** directly into the **LRO Inventory** within Coinbase Regology.</p>
+                    <p class="text-lg mb-4">This guide will walk you through the new functionality for adding <strong>Applicable Alerts</strong> directly into the <strong>LRO Inventory</strong> within Coinbase Regology.</p>
                     <p class="text-md mb-8 p-3 border alert-box bg-yellow-50 text-gray-700">Click start to begin</p>
                     <div class="flex justify-center mt-10">
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-20 h-20 regology-text" viewBox="0 0 24 24" fill="none" stroke="${PURPLE_COLOR}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
@@ -119,49 +111,37 @@
                 `,
                 interactionRequired: false,
                 onEnter: () => {
-                    // Rename the next button to 'Start'
                     document.getElementById('next-btn').textContent = 'Start \u2192';
                 }
             },
-            // Step 1: Identify and Initiate
             {
                 title: "Step 1: Identify and Initiate the Addition",
                 content: `
-                    <p class="text-lg mb-4">This function is used when LROs are **final law** but are **not yet part of the Coinbase Regology LRO Inventory**.</p>
-                    
-                    <img src="uploaded:alert_detail.png-fc63f814-6fc6-4f1b-9b55-c9350db68792" class="screenshot" alt="Alert Detail Screen showing 'Became Law' status and 'Add to Library' button" />
-                    
-                    <p class="text-md alert-box p-3 bg-gray-50 text-gray-700 mb-4">The button to add the alert to the inventory will only appear if the status is **“Became Law”** or **“Final Rule.”** <br> Use your judgment, but if Applicable, the alert should likely be added.</p>
-                    
-                    <img src="uploaded:step1_add_to_library.png-e59e63d3-ab92-4548-bd55-bd64ae77fb10" class="screenshot max-w-sm" alt="Add to Library Step 1 of 4 prompt" />
-
-                    <p class="text-md mt-4">**Click the highlighted text above** to review the criteria for when to add an alert to the library.</p>
+                    <p class="text-lg mb-4">This function is used when LROs are <strong>final law</strong> but are <strong>not yet part of the Coinbase Regology LRO Inventory</strong>.</p>
+                    <img src="images/alert_detail.png" class="screenshot" alt="Alert Detail Screen showing 'Became Law' status and 'Add to Library' button" />
+                    <p class="text-md alert-box p-3 bg-gray-50 text-gray-700 mb-4">The button to add the alert to the inventory will only appear if the status is <strong>“Became Law”</strong> or <strong>“Final Rule.”</strong> <br> Use your judgment, but if Applicable, the alert should likely be added.</p>
+                    <img src="images/step1_add_to_library.png" class="screenshot max-w-sm" alt="Add to Library Step 1 of 4 prompt" />
+                    <p class="text-md mt-4"><strong>Click the highlighted text below</strong> to review the criteria for when to add an alert to the library.</p>
                     <span id="status-criteria" class="interactive-highlight border-b-2 border-dashed border-gray-500 hidden" onclick="triggerCriteriaModal()">Became Law or Final Rule</span>
-
                 `,
                 interactionRequired: true,
                 onEnter: () => {
                     document.getElementById('next-btn').disabled = true;
                     document.getElementById('next-btn').classList.remove('regology-purple');
                     document.getElementById('next-btn').classList.add('bg-gray-300', 'text-gray-800');
-                    // Show hidden text for interaction
                     document.getElementById('status-criteria').classList.remove('hidden');
-                    
                     window.triggerCriteriaModal = () => {
-                        showModal('Alert Criteria Tip', 'Use this functionality when the LRO is considered **final law**. The system enforces this by only showing the button if the alert status is **"Became Law"** or **"Final Rule."** Use your judgment, but if Applicable, the alert should be added.');
+                        showModal('Alert Criteria Tip', 'Use this functionality when the LRO is considered <strong>final law</strong>. The system enforces this by only showing the button if the alert status is <strong>"Became Law"</strong> or <strong>"Final Rule."</strong> Use your judgment, but if Applicable, the alert should be added.');
                     };
                 }
             },
-            // Step 2: Complete Mandatory Metadata
             {
-                title: "Step 2: Complete Mandatory Metadata Entry (Step 1 of 4)",
+                title: "Step 2: Complete Mandatory Metadata Entry ",
                 content: `
-                    <p class="text-lg mb-4">After clicking **"Add to Inventory,"** you are prompted to fill out all required Metadata. **For this training, all fields are considered mandatory** to ensure complete, high-quality entries.</p>
-                    
+                    <p class="text-lg mb-4">After clicking <strong>"Add to Inventory,"</strong> you are prompted to fill out all required Metadata. <strong>For this training, all fields are considered mandatory</strong> to ensure complete, high-quality entries.</p>
                     <p class="text-sm text-red-600 mt-2 p-3 bg-red-100 rounded-md mb-4">
-                        **Training Mandate:** Even if Regology allows skipping, you must complete all fields. We are working with the Regology team to enforce these fields in the backend.
+                        <strong>Training Mandate:</strong> Even if Regology allows skipping, you must complete all fields. We are working with the Regology team to enforce these fields in the backend.
                     </p>
-
                     <div class="mock-screenshot">
                         <div class="text-xl font-semibold regology-text mb-4">Mock Metadata View (1 of 4)</div>
                         <div class="grid grid-cols-2 gap-4">
@@ -175,25 +155,19 @@
                 interactionRequired: false,
                 onEnter: () => {}
             },
-            // Step 3: Define Workflow Status and Topics
             {
-                title: "Step 3: Define Workflow Status and Topics (Steps 2 & 3 of 4)",
+                title: "Step 3: Define Workflow Status and Topics ",
                 content: `
                     <p class="text-lg mb-4">The next two steps define the document's workflow status and classification.</p>
-                    
-                    <img src="uploaded:step2_workflow_status.png-0366d629-cd0b-4aef-ac7f-bfabd8c38cfd" class="screenshot max-w-sm" alt="Select Workflow Status screen showing Applicable and Following options" />
-                    
-                    <p class="text-md alert-box p-3 bg-gray-50 text-gray-700 mb-4">For LRO Inventory additions, you **must** select **"Applicable."** <br> **Click the 'Applicable' status below** to confirm your choice before proceeding.</p>
-
+                    <img src="images/step2_workflow_status.png" class="screenshot max-w-sm" alt="Select Workflow Status screen showing Applicable and Following options" />
+                    <p class="text-md alert-box p-3 bg-gray-50 text-gray-700 mb-4">For LRO Inventory additions, you <strong>must</strong> select <strong>"Applicable."</strong> <br> <strong>Click the 'Applicable' status below</strong> to confirm your choice before proceeding.</p>
                     <h4 class="font-bold text-gray-800 mb-2">Select Workflow Status:</h4>
                     <div class="flex space-x-4 mb-4">
                         <div class="border border-gray-300 p-3 rounded-md cursor-pointer hover:bg-red-50 transition" onclick="quizAnswer('Following')">Following (Wrong)</div>
                         <div id="applicable-option" class="border-2 border-green-600 bg-green-50 p-3 rounded-md cursor-pointer transition font-semibold" onclick="quizAnswer('Applicable')">Applicable</div>
                     </div>
-                    
-                    <img src="uploaded:step3_topic_mapping.png-0c1dc6e0-799f-4c6c-85c6-aa5a354c1d8a" class="screenshot max-w-sm" alt="Topic(s) Mapping screen" />
-                    <p class="text-sm text-gray-600 mt-2">Topic(s) Mapping is **Optional** but recommended for proper categorization.</p>
-
+                    <img src="images/step3_topic_mapping.png" class="screenshot max-w-sm" alt="Topic(s) Mapping screen" />
+                    <p class="text-sm text-gray-600 mt-2">Topic(s) Mapping is <strong>Optional</strong> but recommended for proper categorization.</p>
                 `,
                 interactionRequired: true,
                 onEnter: () => {
@@ -202,28 +176,24 @@
                     document.getElementById('next-btn').classList.add('bg-gray-300', 'text-gray-800');
                     window.quizAnswer = (selection) => {
                         if (selection === 'Applicable') {
-                            showModal('Correct!', 'Selecting **Applicable** is mandatory for LRO Inventory additions.');
+                            showModal('Correct!', 'Selecting <strong>Applicable</strong> is mandatory for LRO Inventory additions.');
                             document.getElementById('applicable-option').classList.add('bg-green-100');
                         } else {
-                            showModal('Try Again', 'For LRO Inventory additions, the status **must be "Applicable"**.');
+                            showModal('Try Again', 'For LRO Inventory additions, the status <strong>must be "Applicable"</strong>.');
                         }
                     };
                 }
             },
-            // Step 4: Assign Owners and Submit
             {
-                title: "Step 4: Assign Owners and Submit (Step 4 of 4)",
+                title: "Step 4: Assign Owners and Submit ",
                 content: `
                     <p class="text-lg mb-4">This is the final step before the approval queue.</p>
-                    
-                    <img src="uploaded:step4_assign_owners.png-3a5d0e85-0f37-4524-82dc-cf787049787e" class="screenshot max-w-sm" alt="Assign Owners screen showing selection for Stephanie Holstein and Global Employment" />
-                    
-                    <p class="text-md alert-box p-3 bg-gray-50 text-gray-700 mb-4">Assigning owners is **Optional** but should be done based on internal coverage and tracking needs (e.g., Global Employment). Click **"Finish Adding"** on the screen to submit.</p>
+                    <img src="images/step4_assign_owners.png" class="screenshot max-w-sm" alt="Assign Owners screen showing selection for Stephanie Holstein and Global Employment" />
+                    <p class="text-md alert-box p-3 bg-gray-50 text-gray-700 mb-4">Assigning owners is <strong>Optional</strong> but should be done based on internal coverage and tracking needs (e.g., Global Employment). Click <strong>"Finish Adding"</strong> on the screen to submit.</p>
                 `,
                 interactionRequired: false,
                 onEnter: () => {}
             },
-            // Step 5: Submission Success and Verification
             {
                 title: "Step 5: Submission Success and Verification",
                 content: `
@@ -231,38 +201,32 @@
                         <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 mr-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
                         Submission Successful! 🎉
                     </h3>
-                    <p class="text-lg mb-4">The alert has been submitted for review. Its status immediately updates to **“Awaiting Approval.”**</p>
-                    
+                    <p class="text-lg mb-4">The alert has been submitted for review. Its status immediately updates to <strong>“Awaiting Approval.”</strong></p>
                     <div class="mock-screenshot mb-6">
                         <div class="text-xl font-semibold regology-text mb-4">Approval Process & Verification</div>
-                        <p class="text-md mb-2">The alert is now in an **approval queue** for RCM to review and ensure all required data is complete.</p>
-                        
+                        <p class="text-md mb-2">The alert is now in an <strong>approval queue</strong> for RCM to review and ensure all required data is complete.</p>
                         <div class="mt-4 p-3 bg-indigo-100 rounded-lg border border-indigo-300">
                             <h4 class="font-bold text-indigo-800">Verification Trail:</h4>
-                            <p class="text-sm text-indigo-700">To check the status, navigate to: **My Work** &gt; **Authority Documents** &gt; **Sent For Review** tab.</p>
+                            <p class="text-sm text-indigo-700">To check the status, navigate to: <strong>My Work</strong> &gt; <strong>Authority Documents</strong> &gt; <strong>Sent For Review</strong> tab.</p>
                         </div>
                     </div>
-
-                    <img src="uploaded:sent_for_review_tab.png-dc48fa69-dac0-44b5-a602-620f0980ecd5" class="screenshot" alt="My Work Authority Documents Sent For Review Tab" />
-                    
+                    <img src="images/sent_for_review_tab.png" class="screenshot" alt="My Work Authority Documents Sent For Review Tab" />
                     <p class="text-md font-bold mt-6 regology-text">You have completed the guide!</p>
                 `,
                 interactionRequired: false,
                 onEnter: () => {
-                    // Update the next button for the end screen
                     document.getElementById('next-btn').textContent = 'Finish';
                     document.getElementById('next-btn').classList.remove('regology-purple');
                     document.getElementById('next-btn').classList.add('bg-gray-500', 'text-white');
                 }
             },
-            // End Step (A dummy step to handle the 'Finish' click)
             {
                 title: "Guide Complete",
-                content: "<h3 class='text-3xl font-extrabold text-green-600 mb-4'>Guide Complete!</h3><p class='text-lg'>Thank you for completing the Coinbase Regology Alert Addition Training. You can now close this guide.</p>",
+                content: "<h3 class='text-3xl font-extrabold text-green-600 mb-4'></h3><p class='text-lg'>Thank you for completing the Coinbase Regology Alert Addition Training. You can now close this guide.</p>",
                 interactionRequired: false,
                 onEnter: () => {
-                    document.getElementById('next-btn').disabled = true;
-                    document.getElementById('prev-btn').disabled = true;
+                    document.getElementById('prev-btn').style.display = 'none';
+                    document.getElementById('next-btn').style.display = 'none';
                 }
             }
         ];
@@ -275,21 +239,27 @@
                     ${step.content}
                 </div>
             `;
-            
-            // Execute onEnter function for specific step logic (like event listeners or button text changes)
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+
+            if (currentStep === 0) {
+                prevBtn.style.display = 'none';
+            } else {
+                prevBtn.style.display = '';
+            }
+            if (currentStep === steps.length - 1) {
+                nextBtn.style.display = 'none';
+            } else {
+                nextBtn.style.display = '';
+            }
+
             if (step.onEnter) {
                 step.onEnter();
             }
 
-            // Handle navigation button states
-            const prevBtn = document.getElementById('prev-btn');
-            const nextBtn = document.getElementById('next-btn');
-
             prevBtn.disabled = currentStep === 0 || currentStep === steps.length - 1;
-            // Interaction required disables the next button unless the interaction is completed
-            nextBtn.disabled = step.interactionRequired; 
+            nextBtn.disabled = step.interactionRequired;
 
-            // Style buttons based on state
             if (prevBtn.disabled) {
                 prevBtn.classList.add('bg-gray-300', 'text-gray-800');
                 prevBtn.classList.remove('regology-purple', 'text-white');
@@ -302,7 +272,6 @@
                 nextBtn.classList.remove('regology-purple', 'text-white');
                 nextBtn.classList.add('bg-gray-300', 'text-gray-800');
             } else if (currentStep !== 0 && currentStep !== steps.length - 1) {
-                // Restore 'Next' text and purple color if not start/end
                 nextBtn.textContent = 'Next \u2192';
                 nextBtn.classList.remove('bg-gray-500', 'bg-gray-300', 'text-gray-800');
                 nextBtn.classList.add('regology-purple', 'text-white');
@@ -314,7 +283,6 @@
                 currentStep++;
                 renderStep();
             } else if (currentStep === 0) {
-                 // Special handling for 'Start' button
                 currentStep++;
                 renderStep();
             }
@@ -323,24 +291,19 @@
         function prevStep() {
             if (currentStep > 0) {
                 currentStep--;
-                // If moving back, ensure the interactionRequired flag is reset if necessary
                 if (currentStep === 1) {
-                    // Re-lock Step 1 if user navigates back to it
                     steps[1].interactionRequired = true; 
                 }
                 if (currentStep === 3) {
-                    // Re-lock Step 3 if user navigates back to it
                     steps[3].interactionRequired = true; 
                 }
                 renderStep();
             }
         }
 
-        // Initialize the guide
         window.onload = () => {
             renderStep();
         };
-
     </script>
 </body>
 </html>

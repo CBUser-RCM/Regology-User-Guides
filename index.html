@@ -22,16 +22,16 @@
             border-radius: 0.5rem;
         }
         .rcm-logo {
-            width: 48px;
-            height: 48px;
-            margin-right: 1.2rem;
-            border-radius: 8px;
+            width: 72px;
+            height: 72px;
+            margin-right: 1.6rem;
+            border-radius: 10px;
             background: #fff;
             box-shadow: 0 2px 8px rgba(106,27,154,0.12);
         }
         .slide-container {
-            min-height: 460px;
-            max-height: 460px;
+            min-height: 420px;
+            max-height: 420px;
             display: flex;
             flex-direction: column;
             align-items: stretch;
@@ -98,17 +98,31 @@
             margin-top: 1.2rem;
             padding-bottom: 0.5rem;
         }
+        .footer-nav {
+            min-height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
         @media (max-width: 700px) {
             .slide-container {
-                min-height: 350px;
-                max-height: 350px;
+                min-height: 320px;
+                max-height: 320px;
             }
             .screenshot-box {
-                min-height: 110px;
-                max-height: 110px;
+                min-height: 90px;
+                max-height: 90px;
             }
             .screenshot {
-                height: 95px;
+                height: 70px;
+            }
+            .rcm-logo {
+                width: 48px;
+                height: 48px;
+                margin-right: 1rem;
+            }
+            .footer-nav {
+                min-height: 44px;
             }
         }
     </style>
@@ -118,7 +132,7 @@
     <div id="guide-container" class="w-full max-w-xl bg-white shadow-2xl rounded-xl overflow-hidden">
 
         <!-- Header -->
-        <header class="rcm-purple flex items-center px-6 py-4 gap-2">
+        <header class="rcm-purple flex items-center px-6 py-6 gap-2">
             <img src="images/rcm_logo.png" alt="RCM Logo" class="rcm-logo" id="rcm-logo-header">
             <div>
                 <h1 class="text-2xl font-bold mb-1 tracking-tight">An RCM Instructional Module</h1>
@@ -133,7 +147,7 @@
         </main>
 
         <!-- Footer Navigation -->
-        <footer class="p-4 sm:p-6 border-t border-gray-200 flex justify-between items-center">
+        <footer class="footer-nav p-4 sm:p-6 border-t border-gray-200">
             <button id="prev-btn" onclick="prevStep()" class="bg-gray-300 text-gray-800 px-5 py-2 rounded-lg font-medium shadow hover:bg-gray-400 transition">&larr; Previous</button>
             <button id="next-btn" onclick="nextStep()" class="rcm-purple px-5 py-2 rounded-lg font-medium shadow-md hover:opacity-90 transition">Next &rarr;</button>
         </footer>
@@ -214,12 +228,11 @@
             const slideContainer = document.getElementById('slide-container');
             slideContainer.innerHTML = `
                 <div class="step-title">${step.title}</div>
-                <div class="screenshot-box">
-                    ${step.screenshot ? 
-                        `<img src="${step.screenshot}" class="screenshot" alt="${step.title} Screenshot">`
-                        : `<img src="images/rcm_logo.png" class="rcm-logo" alt="RCM Logo">`
-                    }
-                </div>
+                ${step.screenshot ? `
+                    <div class="screenshot-box">
+                        <img src="${step.screenshot}" class="screenshot" alt="${step.title} Screenshot">
+                    </div>
+                ` : ""}
                 ${step.tldr ? step.tldr : ""}
                 <div class="rcm-yellow-box">${step.yellowBox}</div>
                 <div class="description">${step.description}</div>

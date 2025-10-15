@@ -22,12 +22,13 @@
             border-radius: 0.5rem;
         }
         .rcm-logo {
-            width: 72px;
-            height: 72px;
-            margin-right: 1.6rem;
-            border-radius: 10px;
+            width: 110px;
+            height: 110px;
+            margin-right: 2rem;
+            border-radius: 16px;
             background: #fff;
             box-shadow: 0 2px 8px rgba(106,27,154,0.12);
+            flex-shrink: 0;
         }
         .slide-container {
             min-height: 420px;
@@ -39,6 +40,15 @@
             padding: 0;
             gap: 0.8rem;
         }
+        .slide-inner {
+            flex: 1 1 auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            padding-bottom: 32px; /* Prevent text from touching bottom, leave room for footer */
+            padding-top: 8px;
+        }
         .screenshot-box {
             display: flex;
             align-items: center;
@@ -48,6 +58,7 @@
             border: 2px solid #6A1B9A33;
             min-height: 180px;
             max-height: 180px;
+            width: 100%;
             margin-bottom: 0.8rem;
         }
         .screenshot {
@@ -67,6 +78,7 @@
             margin-bottom: 0.5rem;
             letter-spacing: 0.5px;
             text-align: center;
+            width: 100%;
         }
         .direction-icon {
             font-size: 1.2em;
@@ -83,6 +95,7 @@
             margin: 1.2rem 0;
             padding: 1rem 1.25rem;
             border-radius: 0.5rem;
+            width: 100%;
         }
         .description {
             color: #2b2239;
@@ -90,6 +103,9 @@
             margin-top: 0.4rem;
             margin-bottom: 0.7rem;
             text-align: left;
+            max-width: 620px;
+            padding-left: 8px;
+            padding-right: 8px;
         }
         .rcm-footer {
             font-size: 0.95rem;
@@ -109,6 +125,9 @@
                 min-height: 320px;
                 max-height: 320px;
             }
+            .slide-inner {
+                padding-bottom: 24px;
+            }
             .screenshot-box {
                 min-height: 90px;
                 max-height: 90px;
@@ -117,8 +136,8 @@
                 height: 70px;
             }
             .rcm-logo {
-                width: 48px;
-                height: 48px;
+                width: 68px;
+                height: 68px;
                 margin-right: 1rem;
             }
             .footer-nav {
@@ -187,39 +206,49 @@
                 screenshot: "images/metadata_form.png",
                 yellowBox: `<span class="direction-icon">🟡</span>Please fill out <b>all required fields</b> marked with a <span class="text-red-500">*</span>.<br>
                 <b>Mandatory for RCM:</b> Title, Effective Date, Summary, Citation Link.`,
-                description: `RCM requires complete, high-quality entries for compliance tracking. You must enter:<br>
+                description: `<div style="max-width: 570px;">
+                RCM requires complete, high-quality entries for compliance tracking. You must enter:
                 <ul class="list-disc ml-6 mt-2 mb-2">
                     <li><span class="font-bold">Title</span> (Name of Rule/Law)</li>
                     <li><span class="font-bold">Effective Date</span></li>
                     <li><span class="font-bold">Summary</span></li>
                     <li><span class="font-bold">Citation Link</span></li>
                 </ul>
-                Even if Regology allows skipping, <span class="font-bold rcm-text">do not leave these blank</span>.`,
+                Even if Regology allows skipping, <span class="font-bold rcm-text">do not leave these blank</span>.
+                </div>`,
             },
             {
                 title: "Step 3: Set Workflow Status & Topics",
                 screenshot: "images/workflow_status.png",
                 yellowBox: `<span class="direction-icon">🟡</span><b>Select "Applicable"</b> for workflow status. Topic(s) mapping is optional, but recommended for better categorization.`,
-                description: `Choose <span class="font-bold rcm-text">Applicable</span> when adding to the LRO Inventory.<br>
-                Use topic mapping for better categorization if relevant.`,
+                description: `<div style="max-width: 570px;">
+                Choose <span class="font-bold rcm-text">Applicable</span> when adding to the LRO Inventory.<br>
+                Use topic mapping for better categorization if relevant.
+                </div>`,
             },
             {
                 title: "Step 4: Assign Owners & Submit",
                 screenshot: "images/assign_owners.png",
                 yellowBox: `<span class="direction-icon">🟡</span>Assign owners if required for internal tracking, then click <b>Finish Adding</b> to submit.`,
-                description: `Owners can help with coverage and follow-up. Submission sends alert for RCM review.`,
+                description: `<div style="max-width: 570px;">
+                Owners can help with coverage and follow-up. Submission sends alert for RCM review.
+                </div>`,
             },
             {
                 title: "Step 5: Submission Success & Verification",
                 screenshot: "images/sent_for_review_tab.png",
                 yellowBox: `<span class="direction-icon">🟡</span>Check the status by navigating to <b>My Work &gt; Authority Documents &gt; Sent For Review</b> tab.`,
-                description: `The alert enters the approval queue for RCM review. You can verify its status and progress there.`,
+                description: `<div style="max-width: 570px;">
+                The alert enters the approval queue for RCM review. You can verify its status and progress there.
+                </div>`,
             },
             {
                 title: "Training Complete!",
                 screenshot: "",
                 yellowBox: `<span class="direction-icon">🟡</span>You're done! This process is quick and simple—thanks for helping keep our LRO Inventory evergreen.`,
-                description: `If you have questions or feedback, please contact the RCM Team. This training took just a few minutes, and the process itself is even faster!`,
+                description: `<div style="max-width: 570px;">
+                If you have questions or feedback, please contact the RCM Team. This training took just a few minutes, and the process itself is even faster!
+                </div>`,
             }
         ];
 
@@ -227,15 +256,17 @@
             const step = steps[currentStep];
             const slideContainer = document.getElementById('slide-container');
             slideContainer.innerHTML = `
-                <div class="step-title">${step.title}</div>
-                ${step.screenshot ? `
-                    <div class="screenshot-box">
-                        <img src="${step.screenshot}" class="screenshot" alt="${step.title} Screenshot">
-                    </div>
-                ` : ""}
-                ${step.tldr ? step.tldr : ""}
-                <div class="rcm-yellow-box">${step.yellowBox}</div>
-                <div class="description">${step.description}</div>
+                <div class="slide-inner">
+                    <div class="step-title">${step.title}</div>
+                    ${step.screenshot ? `
+                        <div class="screenshot-box">
+                            <img src="${step.screenshot}" class="screenshot" alt="${step.title} Screenshot">
+                        </div>
+                    ` : ""}
+                    ${step.tldr ? step.tldr : ""}
+                    <div class="rcm-yellow-box">${step.yellowBox}</div>
+                    <div class="description">${step.description}</div>
+                </div>
             `;
             document.getElementById('prev-btn').disabled = currentStep === 0;
             document.getElementById('next-btn').disabled = currentStep === steps.length - 1;

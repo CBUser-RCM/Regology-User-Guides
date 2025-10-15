@@ -2,308 +2,232 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <title>An RCM Instructional Module: Regology Workflow Optimization Series</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Regology: Add Applicable Alerts Guide</title>
-    <!-- Load Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        .regology-purple {
-            background-color: #6A1B9A;
-            color: white;
+        .rcm-purple { background-color: #6A1B9A; color: #fff; }
+        .rcm-border { border-color: #6A1B9A; }
+        .rcm-text { color: #6A1B9A; }
+        .rcm-yellow-box {
+            background: #FFFDE7;
+            border-left: 5px solid #FBC02D;
+            color: #444;
+            font-size: 1rem;
+            margin-bottom: 1.3rem;
+            margin-top: 1rem;
+            padding: 1rem 1.25rem;
+            border-radius: 0.5rem;
+            font-weight: 500;
         }
-        .regology-border {
-            border-color: #6A1B9A;
+        .rcm-logo {
+            width: 48px;
+            height: 48px;
+            margin-right: 1rem;
+            border-radius: 8px;
+            background: #fff;
+            box-shadow: 0 2px 8px rgba(106,27,154,0.10);
         }
-        .regology-text {
-            color: #6A1B9A;
-        }
-        .interactive-highlight {
-            cursor: pointer;
-            text-decoration: underline;
-            font-weight: 700;
-        }
-        .alert-box {
-            border-left: 4px solid #FBC02D;
+        .slide-container {
+            min-height: 520px;
+            max-height: 520px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 0;
+            overflow: hidden;
         }
         .screenshot {
+            width: 620px;
+            height: 250px;
+            object-fit: contain;
+            border-radius: 10px;
+            box-shadow: 0 6px 16px rgba(106,27,154,0.10);
+            border: 2px solid #6A1B9A33;
+            margin-bottom: 1.2rem;
+            background: #faf9fc;
+        }
+        .step-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #6A1B9A;
+            border-bottom: 2px solid #FBC02D;
+            padding-bottom: 0.3rem;
+            margin-bottom: 1rem;
+            letter-spacing: 0.5px;
+            text-align: center;
             width: 100%;
-            max-width: 600px;
-            height: auto;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-            border: 1px solid #ddd;
-            margin: 16px auto;
-            display: block;
+        }
+        .direction-icon {
+            font-size: 1.2em;
+            color: #FBC02D;
+            vertical-align: middle;
+            margin-right: 0.3em;
+        }
+        .tldr-box {
+            background: #F3E8FF;
+            border-left: 5px solid #6A1B9A;
+            color: #4B2C6A;
+            font-size: 1rem;
+            margin-bottom: 1.2rem;
+            margin-top: 1rem;
+            padding: 1rem 1.25rem;
+            border-radius: 0.5rem;
+            font-weight: 500;
+            width: 100%;
+        }
+        .rcm-footer {
+            font-size: 0.95rem;
+            color: #6A1B9A;
+            text-align: center;
+            margin-top: 1.2rem;
+            padding-bottom: 0.5rem;
+        }
+        @media (max-width: 700px) {
+            .screenshot {
+                width: 100%;
+                height: 170px;
+            }
+            .slide-container {
+                min-height: 420px;
+                max-height: 420px;
+            }
         }
     </style>
 </head>
 <body class="min-h-screen bg-gray-100 font-sans antialiased flex items-center justify-center p-4">
 
-    <div id="guide-container" class="w-full max-w-4xl bg-white shadow-2xl rounded-xl overflow-hidden">
-        
+    <div id="guide-container" class="w-full max-w-2xl bg-white shadow-2xl rounded-xl overflow-hidden">
+
         <!-- Header -->
-        <header class="regology-purple p-4 sm:p-6">
-            <h1 class="text-2xl sm:text-3xl font-bold">Coinbase Regology Training</h1>
-            <h2 class="text-sm sm:text-md opacity-90 mt-1">Adding Applicable Alerts to the Library </h2>
+        <header class="rcm-purple flex items-center px-6 py-4 sm:py-6">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAE1CAYAAABwMynQAAABRUlEQVR4nO3BQQ0AAAgDoJvcbDAZpAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGQwzZkAAQvYX9YAAAAASUVORK5CYII=" alt="RCM Logo" class="rcm-logo" id="rcm-logo-header">
+            <div>
+                <h1 class="text-2xl font-bold mb-1">An RCM Instructional Module</h1>
+                <h2 class="text-base font-semibold mb-1">Regology Workflow Optimization Series</h2>
+                <div class="text-xs text-gray-200">Prepared by Regulatory Change Management (RCM)</div>
+            </div>
         </header>
 
         <!-- Content Area -->
-        <main class="p-6 sm:p-10">
-            <div id="step-content">
-                <!-- Content injected here by JavaScript -->
-            </div>
+        <main class="p-6 sm:p-8">
+            <div id="slide-container" class="slide-container"></div>
         </main>
 
-        <!-- Navigation Footer -->
-        <footer id="nav-footer" class="p-4 sm:p-6 border-t border-gray-200 flex justify-between">
-            <button id="prev-btn" onclick="prevStep()" class="bg-gray-300 text-gray-800 px-4 py-2 rounded-lg font-medium shadow hover:bg-gray-400 transition" disabled>
-                &larr; Previous
-            </button>
-            <button id="next-btn" onclick="nextStep()" class="regology-purple px-4 py-2 rounded-lg font-medium shadow-md hover:opacity-90 transition">
-                Next &rarr;
-            </button>
+        <!-- Footer Navigation -->
+        <footer class="p-4 sm:p-6 border-t border-gray-200 flex justify-between items-center">
+            <button id="prev-btn" onclick="prevStep()" class="bg-gray-300 text-gray-800 px-5 py-2 rounded-lg font-medium shadow hover:bg-gray-400 transition">&larr; Previous</button>
+            <button id="next-btn" onclick="nextStep()" class="rcm-purple px-5 py-2 rounded-lg font-medium shadow-md hover:opacity-90 transition">Next &rarr;</button>
         </footer>
-    </div>
-
-    <!-- Message Modal for interactions (e.g., Hotspots, Quiz Feedback) -->
-    <div id="modal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
-        <div class="bg-white p-6 rounded-xl max-w-sm mx-4 shadow-xl border-t-4 regology-border">
-            <h3 id="modal-title" class="text-xl font-bold mb-3 regology-text">Alert Criteria Tip</h3>
-            <p id="modal-body" class="text-gray-700"></p>
-            <button onclick="closeModal()" class="mt-4 regology-purple px-4 py-2 rounded-lg font-medium hover:opacity-90 transition">
-                Got it!
-            </button>
-        </div>
+        <div class="rcm-footer">Regulatory Change Management (RCM) | Coinbase</div>
     </div>
 
     <script>
         let currentStep = 0;
-        const PURPLE_COLOR = '#6A1B9A';
-
-        function showModal(title, body) {
-            document.getElementById('modal-title').textContent = title;
-            document.getElementById('modal-body').innerHTML = body;
-            document.getElementById('modal').classList.remove('hidden');
-            document.getElementById('modal').classList.add('flex');
-        }
-
-        function closeModal() {
-            document.getElementById('modal').classList.remove('flex');
-            document.getElementById('modal').classList.add('hidden');
-            if (steps[currentStep].interactionRequired) {
-                document.getElementById('next-btn').disabled = false;
-                document.getElementById('next-btn').classList.remove('bg-gray-300', 'text-gray-800');
-                document.getElementById('next-btn').classList.add('regology-purple');
-                steps[currentStep].interactionRequired = false;
-            }
-        }
-
+        // Steps Array: Consistent format, screenshot always sized the same, messaging clear, TL;DR first slide.
         const steps = [
             {
-                title: "Welcome to the Guide",
-                content: `
-                    <h3 class="text-3xl font-extrabold mb-6 regology-text">Coinbase Regology Training</h3>
-                    <p class="text-lg mb-4">This guide will walk you through the functionality for adding <strong>Applicable Alerts</strong> directly into the <strong>LRO Inventory</strong> within Regology.</p>
-                    <p class="text-md mb-8 p-3 border alert-box bg-yellow-50 text-gray-700">Click start to begin</p>
-                    <div class="flex justify-center mt-10">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-20 h-20 regology-text" viewBox="0 0 24 24" fill="none" stroke="${PURPLE_COLOR}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                title: "TL;DR: Why This Training?",
+                screenshot: "", // TLDR does not need a screenshot
+                yellowBox: "",
+                tldr: `
+                    <div class="tldr-box">
+                        <span class="font-bold">Why am I seeing this?</span>
+                        <ul class="list-disc ml-6 mt-2 mb-2">
+                            <li>This quick tutorial is part of your usual workflow—no extra steps.</li>
+                            <li><span class="rcm-text font-bold">Goal:</span> Keep our LRO Inventory evergreen & compliant.</li>
+                            <li><span class="rcm-text font-bold">Training time:</span> 3–5 minutes</li>
+                            <li><span class="rcm-text font-bold">Process time:</span> ~2 minutes per alert</li>
+                            <li>Part of keeping Coinbase compliant—easy, fast, and everyone benefits.</li>
+                        </ul>
                     </div>
                 `,
-                interactionRequired: false,
-                onEnter: () => {
-                    document.getElementById('next-btn').textContent = 'Start \u2192';
-                }
+                description: `
+                    <span class="block mt-2 text-gray-700">This module is designed to be quick and easy. You’ll see exactly how to add finalized regulatory alerts to the inventory in just a few steps. Let’s get started!</span>
+                `
             },
             {
-                title: "Step 1: Identify and Initiate the Addition",
-                content: `
-                    <p class="text-lg mb-4">This functionality is used when LROs are <strong>final law</strong> but are <strong>not yet part of the LRO Inventory</strong>.</p>
-                    <img src="images/alert_detail.png" class="screenshot" alt="Alert Detail Screen showing 'Became Law' status and 'Add to Library' button" />
-                    <p class="text-md alert-box p-3 bg-gray-50 text-gray-700 mb-4">The button to add the alert to the inventory will only appear if the status is <strong>“Became Law”</strong> or <strong>“Final Rule.”</strong> <br> Use your judgment, but if Applicable, the alert should likely be added.</p>
-                    <img src="images/step1_add_to_library.png" class="screenshot max-w-sm" alt="Add to Library Step 1 of 4 prompt" />
-                    <p class="text-md mt-4"><strong>Click the highlighted text below</strong> to review the criteria for when to add an alert to the library.</p>
-                    <span id="status-criteria" class="interactive-highlight border-b-2 border-dashed border-gray-500 hidden" onclick="triggerCriteriaModal()">Became Law or Final Rule</span>
-                `,
-                interactionRequired: true,
-                onEnter: () => {
-                    document.getElementById('next-btn').disabled = true;
-                    document.getElementById('next-btn').classList.remove('regology-purple');
-                    document.getElementById('next-btn').classList.add('bg-gray-300', 'text-gray-800');
-                    document.getElementById('status-criteria').classList.remove('hidden');
-                    window.triggerCriteriaModal = () => {
-                        showModal('Alert Criteria Tip', 'Use this functionality when the LRO is considered <strong>final law</strong>. The system enforces this by only showing the button if the alert status is <strong>"Became Law"</strong> or <strong>"Final Rule."</strong> Use your judgment, but if Applicable, the alert should be added.');
-                    };
-                }
+                title: "Step 1: Locate the 'Add to Library' Button",
+                screenshot: "images/alert_screen_add_to_library_arrows.png", // Image 1: status is "Add to Library" and red arrows highlight functionality
+                yellowBox: `<span class="direction-icon">🟡</span>Navigate to the alert detail screen. When an alert's status is <b>Became Law</b> or <b>Final Rule</b>, you'll see the <span class="font-bold rcm-text">Add to Library</span> button (highlighted below). Click it to begin adding the alert to the LRO Inventory.`,
+                description: `This is the starting point for adding a regulatory alert to Coinbase's LRO Inventory.<br>
+                <b>Tip:</b> If you don't see the button, check the alert's status first. The <span class="font-bold rcm-text">Add to Library</span> button only appears for finalized laws/rules.`,
             },
             {
-                title: "Step 2: Complete Mandatory Metadata Entry ",
-                content: `
-                    <p class="text-lg mb-4">After clicking <strong>"Add to Inventory,"</strong> you are prompted to fill out all required Metadata. <strong>For this training, all fields are considered mandatory</strong> to ensure complete, high-quality entries.</p>
-                    <p class="text-sm text-red-600 mt-2 p-3 bg-red-100 rounded-md mb-4">
-                        <strong>Training Mandate:</strong> Even if Regology allows skipping, you must complete all fields. We are working with the Regology team to enforce these fields in the backend.
-                    </p>
-                    <div class="mock-screenshot">
-                        <div class="text-xl font-semibold regology-text mb-4">Mock Metadata View (1 of 4)</div>
-                        <div class="grid grid-cols-2 gap-4">
-                            <div><label class="block text-sm font-medium text-gray-700">Title <span class="text-red-500">*</span></label><input type="text" class="mt-1 block w-full border border-gray-300 rounded-md p-2" value="SEC Final Rule Name" disabled></div>
-                            <div><label class="block text-sm font-medium text-gray-700">Effective Date <span class="text-red-500">*</span></label><input type="date" class="mt-1 block w-full border border-gray-300 rounded-md p-2" value="2025-09-01" disabled></div>
-                            <div class="col-span-2"><label class="block text-sm font-medium text-gray-700">Summary <span class="text-red-500">*</span></label><textarea class="mt-1 block w-full border border-gray-300 rounded-md p-2" rows="2" disabled>A concise summary of the LRO's content.</textarea></div>
-                            <div><label class="block text-sm font-medium text-gray-700">Citation Link <span class="text-red-500">*</span></label><input type="url" class="mt-1 block w-full border border-gray-300 rounded-md p-2" value="https://sec.gov/final-rule-xyz" disabled></div>
-                        </div>
-                    </div>
-                `,
-                interactionRequired: false,
-                onEnter: () => {}
+                title: "Step 2: Complete Required Metadata Fields",
+                screenshot: "images/metadata_form.png",
+                yellowBox: `<span class="direction-icon">🟡</span>Please fill out <b>all required fields</b> marked with a <span class="text-red-500">*</span>.<br>
+                <b>Mandatory for RCM:</b> Title, Effective Date, Summary, Citation Link.`,
+                description: `RCM requires complete, high-quality entries for compliance tracking. You must enter:<br>
+                <ul class="list-disc ml-6 mt-2 mb-2">
+                    <li><span class="font-bold">Title</span> (Name of Rule/Law)</li>
+                    <li><span class="font-bold">Effective Date</span></li>
+                    <li><span class="font-bold">Summary</span></li>
+                    <li><span class="font-bold">Citation Link</span></li>
+                </ul>
+                Even if Regology allows skipping, <span class="font-bold rcm-text">do not leave these blank</span>.`,
             },
             {
-                title: "Step 3: Define Workflow Status and Topics ",
-                content: `
-                    <p class="text-lg mb-4">The next two steps define the document's workflow status and classification.</p>
-                    <img src="images/step2_workflow_status.png" class="screenshot max-w-sm" alt="Select Workflow Status screen showing Applicable and Following options" />
-                    <p class="text-md alert-box p-3 bg-gray-50 text-gray-700 mb-4">For LRO Inventory additions, you <strong>must</strong> select <strong>"Applicable."</strong> <br> <strong>Click the 'Applicable' status below</strong> to confirm your choice before proceeding.</p>
-                    <h4 class="font-bold text-gray-800 mb-2">Select Workflow Status:</h4>
-                    <div class="flex space-x-4 mb-4">
-                        <div class="border border-gray-300 p-3 rounded-md cursor-pointer hover:bg-red-50 transition" onclick="quizAnswer('Following')">Following (Wrong)</div>
-                        <div id="applicable-option" class="border-2 border-green-600 bg-green-50 p-3 rounded-md cursor-pointer transition font-semibold" onclick="quizAnswer('Applicable')">Applicable</div>
-                    </div>
-                    <img src="images/step3_topic_mapping.png" class="screenshot max-w-sm" alt="Topic(s) Mapping screen" />
-                    <p class="text-sm text-gray-600 mt-2">Topic(s) Mapping is <strong>Optional</strong> but recommended for proper categorization.</p>
-                `,
-                interactionRequired: true,
-                onEnter: () => {
-                    document.getElementById('next-btn').disabled = true;
-                    document.getElementById('next-btn').classList.remove('regology-purple');
-                    document.getElementById('next-btn').classList.add('bg-gray-300', 'text-gray-800');
-                    window.quizAnswer = (selection) => {
-                        if (selection === 'Applicable') {
-                            showModal('Correct!', 'Selecting <strong>Applicable</strong> is mandatory for LRO Inventory additions.');
-                            document.getElementById('applicable-option').classList.add('bg-green-100');
-                        } else {
-                            showModal('Try Again', 'For LRO Inventory additions, the status <strong>must be "Applicable"</strong>.');
-                        }
-                    };
-                }
+                title: "Step 3: Set Workflow Status & Topics",
+                screenshot: "images/workflow_status.png",
+                yellowBox: `<span class="direction-icon">🟡</span><b>Select "Applicable"</b> for workflow status. Topic(s) mapping is optional, but recommended for better categorization.`,
+                description: `Choose <span class="font-bold rcm-text">Applicable</span> when adding to the LRO Inventory.<br>
+                Use topic mapping for better categorization if relevant.`,
             },
             {
-                title: "Step 4: Assign Owners and Submit ",
-                content: `
-                    <p class="text-lg mb-4">This is the final step before the approval queue.</p>
-                    <img src="images/step4_assign_owners.png" class="screenshot max-w-sm" alt="Assign Owners screen showing selection for Stephanie Holstein and Global Employment" />
-                    <p class="text-md alert-box p-3 bg-gray-50 text-gray-700 mb-4">Assigning owners is <strong>Optional</strong> but should be done based on internal coverage and tracking needs (e.g., Global Employment). Click <strong>"Finish Adding"</strong> on the screen to submit.</p>
-                `,
-                interactionRequired: false,
-                onEnter: () => {}
+                title: "Step 4: Assign Owners & Submit",
+                screenshot: "images/assign_owners.png",
+                yellowBox: `<span class="direction-icon">🟡</span>Assign owners if required for internal tracking, then click <b>Finish Adding</b> to submit.`,
+                description: `Owners can help with coverage and follow-up. Submission sends alert for RCM review.`,
             },
             {
-                title: "Step 5: Submission Success and Verification",
-                content: `
-                    <h3 class="text-3xl font-extrabold text-green-600 mb-4 flex items-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 mr-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-                        Submission Successful! 🎉
-                    </h3>
-                    <p class="text-lg mb-4">The alert has been submitted for review. Its status immediately updates to <strong>“Awaiting Approval.”</strong></p>
-                    <div class="mock-screenshot mb-6">
-                        <div class="text-xl font-semibold regology-text mb-4">Approval Process & Verification</div>
-                        <p class="text-md mb-2">The alert is now in an <strong>approval queue</strong> for RCM to review and ensure all required data is complete.</p>
-                        <div class="mt-4 p-3 bg-indigo-100 rounded-lg border border-indigo-300">
-                            <h4 class="font-bold text-indigo-800">Verification Trail:</h4>
-                            <p class="text-sm text-indigo-700">To check the status, navigate to: <strong>My Work</strong> &gt; <strong>Authority Documents</strong> &gt; <strong>Sent For Review</strong> tab.</p>
-                        </div>
-                    </div>
-                    <img src="images/sent_for_review_tab.png" class="screenshot" alt="My Work Authority Documents Sent For Review Tab" />
-                    <p class="text-md font-bold mt-6 regology-text">You have completed the guide!</p>
-                `,
-                interactionRequired: false,
-                onEnter: () => {
-                    document.getElementById('next-btn').textContent = 'Finish';
-                    document.getElementById('next-btn').classList.remove('regology-purple');
-                    document.getElementById('next-btn').classList.add('bg-gray-500', 'text-white');
-                }
+                title: "Step 5: Submission Success & Verification",
+                screenshot: "images/sent_for_review_tab.png",
+                yellowBox: `<span class="direction-icon">🟡</span>Check the status by navigating to <b>My Work &gt; Authority Documents &gt; Sent For Review</b> tab.`,
+                description: `The alert enters the approval queue for RCM review. You can verify its status and progress there.`,
             },
             {
-                title: "Guide Complete",
-                content: "<h3 class='text-3xl font-extrabold text-green-600 mb-4'></h3><p class='text-lg'>Thank you for completing the Coinbase Regology Alert Addition Training. You can now close this guide.</p>",
-                interactionRequired: false,
-                onEnter: () => {
-                    document.getElementById('prev-btn').style.display = 'none';
-                    document.getElementById('next-btn').style.display = 'none';
-                }
+                title: "Training Complete!",
+                screenshot: "", // No screenshot for last slide
+                yellowBox: `<span class="direction-icon">🟡</span>You're done! This process is quick and simple—thanks for helping keep our LRO Inventory evergreen.`,
+                description: `If you have questions or feedback, please contact the RCM Team. This training took just a few minutes, and the process itself is even faster!`,
             }
         ];
 
         function renderStep() {
             const step = steps[currentStep];
-            document.getElementById('step-content').innerHTML = `
-                <h3 class="text-2xl font-bold mb-4 border-b pb-2 regology-border regology-text">${step.title}</h3>
-                <div class="min-h-[400px]">
-                    ${step.content}
-                </div>
+            const slideContainer = document.getElementById('slide-container');
+            slideContainer.innerHTML = `
+                <div class="step-title">${step.title}</div>
+                ${step.screenshot ? 
+                    `<img src="${step.screenshot}" class="screenshot" alt="${step.title} Screenshot">`
+                    : `<div style="height:250px;display:flex;align-items:center;justify-content:center;width:620px;background:#faf9fc;border-radius:10px;margin-bottom:1.2rem;">
+                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAE1CAYAAABwMynQAAABRUlEQVR4nO3BQQ0AAAgDoJvcbDAZpAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGQwzZkAAQvYX9YAAAAASUVORK5CYII=" class="rcm-logo" alt="RCM Logo">
+                    </div>`
+                }
+                ${step.tldr ? step.tldr : ""}
+                <div class="rcm-yellow-box">${step.yellowBox}</div>
+                <div class="text-gray-700 text-md" style="width:100%;max-width:620px;margin:auto;">${step.description}</div>
             `;
-            const prevBtn = document.getElementById('prev-btn');
-            const nextBtn = document.getElementById('next-btn');
-
-            if (currentStep === 0) {
-                prevBtn.style.display = 'none';
-            } else {
-                prevBtn.style.display = '';
-            }
-            if (currentStep === steps.length - 1) {
-                nextBtn.style.display = 'none';
-            } else {
-                nextBtn.style.display = '';
-            }
-
-            if (step.onEnter) {
-                step.onEnter();
-            }
-
-            prevBtn.disabled = currentStep === 0 || currentStep === steps.length - 1;
-            nextBtn.disabled = step.interactionRequired;
-
-            if (prevBtn.disabled) {
-                prevBtn.classList.add('bg-gray-300', 'text-gray-800');
-                prevBtn.classList.remove('regology-purple', 'text-white');
-            } else {
-                prevBtn.classList.remove('bg-gray-300', 'text-gray-800');
-                prevBtn.classList.add('regology-purple', 'text-white');
-            }
-
-            if (nextBtn.disabled) {
-                nextBtn.classList.remove('regology-purple', 'text-white');
-                nextBtn.classList.add('bg-gray-300', 'text-gray-800');
-            } else if (currentStep !== 0 && currentStep !== steps.length - 1) {
-                nextBtn.textContent = 'Next \u2192';
-                nextBtn.classList.remove('bg-gray-500', 'bg-gray-300', 'text-gray-800');
-                nextBtn.classList.add('regology-purple', 'text-white');
-            }
+            document.getElementById('prev-btn').disabled = currentStep === 0;
+            document.getElementById('next-btn').disabled = currentStep === steps.length - 1;
+            document.getElementById('next-btn').style.display = currentStep === steps.length - 1 ? "none" : "";
         }
 
         function nextStep() {
-            if (currentStep < steps.length - 1 && !steps[currentStep].interactionRequired) {
-                currentStep++;
-                renderStep();
-            } else if (currentStep === 0) {
+            if (currentStep < steps.length - 1) {
                 currentStep++;
                 renderStep();
             }
         }
-
         function prevStep() {
             if (currentStep > 0) {
                 currentStep--;
-                if (currentStep === 1) {
-                    steps[1].interactionRequired = true; 
-                }
-                if (currentStep === 3) {
-                    steps[3].interactionRequired = true; 
-                }
                 renderStep();
             }
         }
-
-        window.onload = () => {
-            renderStep();
-        };
+        window.onload = renderStep;
     </script>
 </body>
 </html>

@@ -6,58 +6,67 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
+        body {
+            background: #f3f4f6;
+        }
         .rcm-purple { background-color: #6A1B9A; color: #fff; }
-        .rcm-border { border-color: #6A1B9A; }
         .rcm-text { color: #6A1B9A; }
         .rcm-yellow-box {
             background: #FFFDE7;
             border-left: 5px solid #FBC02D;
             color: #444;
             font-size: 1rem;
-            margin-bottom: 1.3rem;
-            margin-top: 1rem;
+            font-weight: 500;
+            margin: 1.2rem 0 1.2rem 0;
             padding: 1rem 1.25rem;
             border-radius: 0.5rem;
-            font-weight: 500;
         }
         .rcm-logo {
             width: 48px;
             height: 48px;
-            margin-right: 1rem;
+            margin-right: 1.2rem;
             border-radius: 8px;
             background: #fff;
-            box-shadow: 0 2px 8px rgba(106,27,154,0.10);
+            box-shadow: 0 2px 8px rgba(106,27,154,0.12);
         }
         .slide-container {
-            min-height: 520px;
-            max-height: 520px;
+            min-height: 460px;
+            max-height: 460px;
             display: flex;
             flex-direction: column;
-            align-items: center;
+            align-items: stretch;
             justify-content: flex-start;
             padding: 0;
-            overflow: hidden;
+            gap: 0.8rem;
+        }
+        .screenshot-box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #faf9fc;
+            border-radius: 10px;
+            border: 2px solid #6A1B9A33;
+            min-height: 180px;
+            max-height: 180px;
+            margin-bottom: 0.8rem;
         }
         .screenshot {
-            width: 620px;
-            height: 250px;
+            width: 93%;
+            height: 160px;
             object-fit: contain;
             border-radius: 10px;
-            box-shadow: 0 6px 16px rgba(106,27,154,0.10);
-            border: 2px solid #6A1B9A33;
-            margin-bottom: 1.2rem;
+            box-shadow: 0 4px 12px rgba(106,27,154,0.10);
             background: #faf9fc;
         }
         .step-title {
-            font-size: 1.25rem;
+            font-size: 1.18rem;
             font-weight: 700;
             color: #6A1B9A;
             border-bottom: 2px solid #FBC02D;
-            padding-bottom: 0.3rem;
-            margin-bottom: 1rem;
+            padding-bottom: 0.25rem;
+            margin-bottom: 0.5rem;
             letter-spacing: 0.5px;
             text-align: center;
-            width: 100%;
         }
         .direction-icon {
             font-size: 1.2em;
@@ -70,12 +79,17 @@
             border-left: 5px solid #6A1B9A;
             color: #4B2C6A;
             font-size: 1rem;
-            margin-bottom: 1.2rem;
-            margin-top: 1rem;
+            font-weight: 500;
+            margin: 1.2rem 0;
             padding: 1rem 1.25rem;
             border-radius: 0.5rem;
-            font-weight: 500;
-            width: 100%;
+        }
+        .description {
+            color: #2b2239;
+            font-size: 1rem;
+            margin-top: 0.4rem;
+            margin-bottom: 0.7rem;
+            text-align: left;
         }
         .rcm-footer {
             font-size: 0.95rem;
@@ -85,27 +99,30 @@
             padding-bottom: 0.5rem;
         }
         @media (max-width: 700px) {
-            .screenshot {
-                width: 100%;
-                height: 170px;
-            }
             .slide-container {
-                min-height: 420px;
-                max-height: 420px;
+                min-height: 350px;
+                max-height: 350px;
+            }
+            .screenshot-box {
+                min-height: 110px;
+                max-height: 110px;
+            }
+            .screenshot {
+                height: 95px;
             }
         }
     </style>
 </head>
-<body class="min-h-screen bg-gray-100 font-sans antialiased flex items-center justify-center p-4">
+<body class="min-h-screen flex items-center justify-center p-4">
 
-    <div id="guide-container" class="w-full max-w-2xl bg-white shadow-2xl rounded-xl overflow-hidden">
+    <div id="guide-container" class="w-full max-w-xl bg-white shadow-2xl rounded-xl overflow-hidden">
 
         <!-- Header -->
-        <header class="rcm-purple flex items-center px-6 py-4 sm:py-6">
-            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAE1CAYAAABwMynQAAABRUlEQVR4nO3BQQ0AAAgDoJvcbDAZpAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGQwzZkAAQvYX9YAAAAASUVORK5CYII=" alt="RCM Logo" class="rcm-logo" id="rcm-logo-header">
+        <header class="rcm-purple flex items-center px-6 py-4 gap-2">
+            <img src="images/rcm_logo.png" alt="RCM Logo" class="rcm-logo" id="rcm-logo-header">
             <div>
-                <h1 class="text-2xl font-bold mb-1">An RCM Instructional Module</h1>
-                <h2 class="text-base font-semibold mb-1">Regology Workflow Optimization Series</h2>
+                <h1 class="text-2xl font-bold mb-1 tracking-tight">An RCM Instructional Module</h1>
+                <h2 class="text-base font-semibold mb-1 tracking-tight">Regology Workflow Optimization Series</h2>
                 <div class="text-xs text-gray-200">Prepared by Regulatory Change Management (RCM)</div>
             </div>
         </header>
@@ -125,7 +142,6 @@
 
     <script>
         let currentStep = 0;
-        // Steps Array: Consistent format, screenshot always sized the same, messaging clear, TL;DR first slide.
         const steps = [
             {
                 title: "TL;DR: Why This Training?",
@@ -143,13 +159,11 @@
                         </ul>
                     </div>
                 `,
-                description: `
-                    <span class="block mt-2 text-gray-700">This module is designed to be quick and easy. You’ll see exactly how to add finalized regulatory alerts to the inventory in just a few steps. Let’s get started!</span>
-                `
+                description: `<span>This module is designed to be quick and easy. You’ll see exactly how to add finalized regulatory alerts to the inventory in just a few steps. Let’s get started!</span>`
             },
             {
                 title: "Step 1: Locate the 'Add to Library' Button",
-                screenshot: "images/alert_screen_add_to_library_arrows.png", // Image 1: status is "Add to Library" and red arrows highlight functionality
+                screenshot: "images/alert_screen_add_to_library_arrows.png",
                 yellowBox: `<span class="direction-icon">🟡</span>Navigate to the alert detail screen. When an alert's status is <b>Became Law</b> or <b>Final Rule</b>, you'll see the <span class="font-bold rcm-text">Add to Library</span> button (highlighted below). Click it to begin adding the alert to the LRO Inventory.`,
                 description: `This is the starting point for adding a regulatory alert to Coinbase's LRO Inventory.<br>
                 <b>Tip:</b> If you don't see the button, check the alert's status first. The <span class="font-bold rcm-text">Add to Library</span> button only appears for finalized laws/rules.`,
@@ -189,7 +203,7 @@
             },
             {
                 title: "Training Complete!",
-                screenshot: "", // No screenshot for last slide
+                screenshot: "",
                 yellowBox: `<span class="direction-icon">🟡</span>You're done! This process is quick and simple—thanks for helping keep our LRO Inventory evergreen.`,
                 description: `If you have questions or feedback, please contact the RCM Team. This training took just a few minutes, and the process itself is even faster!`,
             }
@@ -200,15 +214,15 @@
             const slideContainer = document.getElementById('slide-container');
             slideContainer.innerHTML = `
                 <div class="step-title">${step.title}</div>
-                ${step.screenshot ? 
-                    `<img src="${step.screenshot}" class="screenshot" alt="${step.title} Screenshot">`
-                    : `<div style="height:250px;display:flex;align-items:center;justify-content:center;width:620px;background:#faf9fc;border-radius:10px;margin-bottom:1.2rem;">
-                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAE1CAYAAABwMynQAAABRUlEQVR4nO3BQQ0AAAgDoJvcbDAZpAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGQwzZkAAQvYX9YAAAAASUVORK5CYII=" class="rcm-logo" alt="RCM Logo">
-                    </div>`
-                }
+                <div class="screenshot-box">
+                    ${step.screenshot ? 
+                        `<img src="${step.screenshot}" class="screenshot" alt="${step.title} Screenshot">`
+                        : `<img src="images/rcm_logo.png" class="rcm-logo" alt="RCM Logo">`
+                    }
+                </div>
                 ${step.tldr ? step.tldr : ""}
                 <div class="rcm-yellow-box">${step.yellowBox}</div>
-                <div class="text-gray-700 text-md" style="width:100%;max-width:620px;margin:auto;">${step.description}</div>
+                <div class="description">${step.description}</div>
             `;
             document.getElementById('prev-btn').disabled = currentStep === 0;
             document.getElementById('next-btn').disabled = currentStep === steps.length - 1;

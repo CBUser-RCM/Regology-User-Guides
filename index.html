@@ -158,7 +158,7 @@
             <div>
                 <h1 class="text-2xl font-bold mb-1 tracking-tight text-left">An RCM Instructional Module</h1>
                 <h2 class="text-base font-semibold mb-1 tracking-tight text-left">Regology Workflow Optimization Series</h2>
-                <div class="text-xs text-gray-200 text-left">Prepared by Regulatory Change Management (RCM)</div>
+                <div class="text-xs text-gray-200 text-left">Prepared by Regulatory Change Management Team</div>
             </div>
         </header>
 
@@ -181,7 +181,7 @@
             {
                 title: "TL;DR: Why This Training?",
                 screenshot: "", // TLDR does not need a screenshot
-                yellowBox: "",
+                yellowBox: "", // No yellow box on first slide
                 tldr: `
                     <div class="tldr-box">
                         <span class="font-bold">Why am I seeing this?</span>
@@ -190,7 +190,6 @@
                             <li><span class="rcm-text font-bold">Goal:</span> Keep our LRO Inventory evergreen & compliant.</li>
                             <li><span class="rcm-text font-bold">Training time:</span> 3–5 minutes</li>
                             <li><span class="rcm-text font-bold">Process time:</span> ~2 minutes per alert</li>
-                            <li>Part of keeping Coinbase compliant—easy, fast, and everyone benefits.</li>
                         </ul>
                     </div>
                 `,
@@ -200,23 +199,14 @@
                 title: "Step 1: Locate the 'Add to Library' Button",
                 screenshot: "images/alert_screen_add_to_library_arrows.png",
                 yellowBox: `<span class="direction-icon">🟡</span>Navigate to the alert detail screen. When an alert's status is <b>Became Law</b> or <b>Final Rule</b>, you'll see the <span class="font-bold rcm-text">Add to Library</span> button (highlighted below). Click it to begin adding the alert to the LRO Inventory.`,
-                description: `This is the starting point for adding a regulatory alert to Coinbase's LRO Inventory.<br>
-                <b>Tip:</b> If you don't see the button, check the alert's status first. The <span class="font-bold rcm-text">Add to Library</span> button only appears for finalized laws/rules.`,
+                description: ``,
             },
             {
                 title: "Step 2: Complete Required Metadata Fields",
                 screenshot: "images/metadata_form.png",
                 yellowBox: `<span class="direction-icon">🟡</span>Please fill out <b>all required fields</b> marked with a <span class="text-red-500">*</span>.<br>
                 <b>Mandatory for RCM:</b> Title, Effective Date, Summary, Citation Link.`,
-                description: `<div style="max-width: 570px;">
-                <ul class="list-disc ml-6 mt-2 mb-2">
-                    <li><span class="font-bold">Title</span> (Name of Rule/Law)</li>
-                    <li><span class="font-bold">Effective Date</span></li>
-                    <li><span class="font-bold">Summary</span></li>
-                    <li><span class="font-bold">Citation Link</span></li>
-                </ul>
-                Even if Regology allows skipping, <span class="font-bold rcm-text">do not leave these blank</span>.
-                </div>`,
+                description: ``,
             },
             {
                 title: "Step 3: Set Workflow Status & Topics",
@@ -224,6 +214,7 @@
                 yellowBox: `<span class="direction-icon">🟡</span><b>Select "Applicable"</b> for workflow status. Topic(s) mapping is optional, but recommended for better categorization.`,
                 description: `<div style="max-width: 570px; text-align: left;">
                 Choose <span class="font-bold rcm-text">Applicable</span> when adding to the LRO Inventory.<br>
+                Use topic mapping for better categorization if relevant.
                 </div>`,
             },
             {
@@ -264,7 +255,7 @@
                         </div>
                     ` : ""}
                     ${step.tldr ? step.tldr : ""}
-                    <div class="rcm-yellow-box">${step.yellowBox}</div>
+                    ${step.yellowBox && currentStep !== 0 ? `<div class="rcm-yellow-box">${step.yellowBox}</div>` : ""}
                     <div class="description">${step.description}</div>
                 </div>
             `;

@@ -2,279 +2,188 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>An RCM Instructional Module: Regology Workflow Optimization Series</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Regology User Guide: Adding LROs to the Inventory</title>
+    <!-- Load Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
+        /* Custom styles for professional appearance */
+        :root {
+            --regology-blue: #2563EB; /* Tailwind blue-600 */
+        }
         body {
-            background: #f3f4f6;
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f7f7;
         }
-        .rcm-purple { background-color: #6A1B9A; color: #fff; }
-        .rcm-text { color: #6A1B9A; }
-        .rcm-yellow-box {
-            background: #FFFDE7;
-            border-left: 5px solid #FBC02D;
-            color: #444;
-            font-size: 1rem;
-            font-weight: 500;
-            margin: 1.2rem 0 1.2rem 0;
-            padding: 1rem 1.25rem;
-            border-radius: 0.5rem;
-            text-align: left;
+        .step-card {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease-in-out;
         }
-        .rcm-logo {
-            width: 145px;
-            height: 145px;
-            margin-right: 2.2rem;
-            border-radius: 22px;
-            background: #fff;
-            box-shadow: 0 2px 8px rgba(106,27,154,0.12);
-            flex-shrink: 0;
+        .step-card:hover {
+            transform: translateY(-2px);
         }
-        .slide-container {
-            min-height: 420px;
-            max-height: 420px;
-            display: flex;
-            flex-direction: column;
-            align-items: stretch;
-            justify-content: flex-start;
-            padding: 0;
-            gap: 0.8rem;
+        .highlight {
+            font-weight: 600;
+            color: var(--regology-blue);
         }
-        .slide-inner {
-            flex: 1 1 auto;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            align-items: stretch;
-            padding-bottom: 32px; /* Prevent text from touching bottom, leave room for footer */
-            padding-top: 8px;
-        }
-        .screenshot-box {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: #faf9fc;
-            border-radius: 10px;
-            border: 2px solid #6A1B9A33;
-            min-height: 180px;
-            max-height: 180px;
-            width: 100%;
-            margin-bottom: 0.8rem;
-        }
-        .screenshot {
-            width: 93%;
-            height: 160px;
-            object-fit: contain;
-            border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(106,27,154,0.10);
-            background: #faf9fc;
-        }
-        .step-title {
-            font-size: 1.18rem;
+        .do-not-mark {
+            color: #DC2626; /* Red-600 */
             font-weight: 700;
-            color: #6A1B9A;
-            border-bottom: 2px solid #FBC02D;
-            padding-bottom: 0.25rem;
-            margin-bottom: 0.5rem;
-            letter-spacing: 0.5px;
-            text-align: left;
-            width: 100%;
-        }
-        .direction-icon {
-            font-size: 1.2em;
-            color: #FBC02D;
-            vertical-align: middle;
-            margin-right: 0.3em;
-        }
-        .tldr-box {
-            background: #F3E8FF;
-            border-left: 5px solid #6A1B9A;
-            color: #4B2C6A;
-            font-size: 1rem;
-            font-weight: 500;
-            margin: 1.2rem 0;
-            padding: 1rem 1.25rem;
-            border-radius: 0.5rem;
-            width: 100%;
-            text-align: left;
-        }
-        .description {
-            color: #2b2239;
-            font-size: 1rem;
-            margin-top: 0.4rem;
-            margin-bottom: 0.7rem;
-            text-align: left;
-            max-width: 620px;
-            padding-left: 8px;
-            padding-right: 8px;
-        }
-        .rcm-footer {
-            font-size: 0.95rem;
-            color: #6A1B9A;
-            text-align: center;
-            margin-top: 1.2rem;
-            padding-bottom: 0.5rem;
-        }
-        .footer-nav {
-            min-height: 64px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-        @media (max-width: 700px) {
-            .slide-container {
-                min-height: 320px;
-                max-height: 320px;
-            }
-            .slide-inner {
-                padding-bottom: 24px;
-            }
-            .screenshot-box {
-                min-height: 90px;
-                max-height: 90px;
-            }
-            .screenshot {
-                height: 70px;
-            }
-            .rcm-logo {
-                width: 90px;
-                height: 90px;
-                margin-right: 1rem;
-            }
-            .footer-nav {
-                min-height: 44px;
-            }
+            border: 2px solid #F87171;
+            padding: 4px 8px;
+            border-radius: 4px;
+            display: inline-block;
         }
     </style>
 </head>
-<body class="min-h-screen flex items-center justify-center p-4">
+<body class="p-4 sm:p-8">
 
-    <div id="guide-container" class="w-full max-w-xl bg-white shadow-2xl rounded-xl overflow-hidden">
+    <!-- Header Section (Slide 1) -->
+    <header class="text-center mb-12 py-10 bg-white shadow-lg rounded-xl">
+        <h1 class="text-4xl sm:text-5xl font-extrabold text-gray-800 mb-4">
+            Adding LROs to the <span class="text-indigo-600">LRO Inventory</span>
+        </h1>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto mb-6">
+            Regology allows you to add new Legal and Regulatory Obligations (LROs) to the <span class="highlight">LRO Inventory</span> during the processing workflow.
+        </p>
+        <div class="flex justify-center space-x-6 text-lg">
+            <p class="text-green-600 font-semibold">Goal: Keep our LRO Inventory evergreen & compliant.</p>
+            <p class="text-gray-500">Training time: 3-5 minutes.</p>
+        </div>
+    </header>
 
-        <!-- Header -->
-        <header class="rcm-purple flex items-center px-6 py-6 gap-2">
-            <img src="images/rcm_logo.png" alt="RCM Logo" class="rcm-logo" id="rcm-logo-header">
-            <div>
-                <h1 class="text-2xl font-bold mb-1 tracking-tight text-left">An RCM Instructional Module</h1>
-                <h2 class="text-base font-semibold mb-1 tracking-tight text-left">Regology Workflow Optimization Series</h2>
-                <div class="text-lg font-bold text-white text-left">Adding alerts to the Law Library</div>
-            </div>
-        </header>
+    <main class="max-w-6xl mx-auto space-y-12">
 
-        <!-- Content Area -->
-        <main class="p-6 sm:p-8">
-            <div id="slide-container" class="slide-container"></div>
-        </main>
+        <!-- Step 1 Section (Slide 2) -->
+        <section id="step-1" class="step-card bg-white p-6 sm:p-8 rounded-xl">
+            <h2 class="text-2xl sm:text-3xl font-bold mb-6 text-gray-800 border-b pb-3 text-indigo-700">
+                <span class="text-3xl font-extrabold mr-2">1.</span> STEP 1: Mark as Applicable or Following
+            </h2>
+            <div class="text-lg text-gray-700 space-y-4">
+                <p>
+                    When an alert is <span class="highlight">Became Law</span> or <span class="highlight">Final Rule</span>, you must determine if it should be added to the inventory.
+                </p>
+                <p>
+                    <span class="font-bold">Action:</span> Select <span class="highlight">"Applicable"</span> or <span class="highlight">“Following”</span> for the workflow status. This action <span class="highlight">triggers the Impact Assessment</span>.
+                </p>
 
-        <!-- Footer Navigation -->
-        <footer class="footer-nav p-4 sm:p-6 border-t border-gray-200">
-            <button id="prev-btn" onclick="prevStep()" class="bg-gray-300 text-gray-800 px-5 py-2 rounded-lg font-medium shadow hover:bg-gray-400 transition">&larr; Previous</button>
-            <button id="next-btn" onclick="nextStep()" class="rcm-purple px-5 py-2 rounded-lg font-medium shadow-md hover:opacity-90 transition">Next &rarr;</button>
-        </footer>
-        <div class="rcm-footer">Regulatory Change Management (RCM) | Coinbase</div>
-    </div>
-
-    <script>
-        let currentStep = 0;
-        const steps = [
-            {
-                title: "TL;DR: Why This Training?",
-                screenshot: "", // TLDR does not need a screenshot
-                yellowBox: "", // No yellow box on first slide
-                tldr: `
-                    <div class="tldr-box">
-                        <span class="font-bold">Why am I seeing this?</span>
-                        <ul class="list-disc ml-6 mt-2 mb-2">
-                            <li>Regology now integrates the capability to add new Legal and Regulatory Obligations (LROs) to the Law Library during the processing workflow.</li>
-                            <li><span class="rcm-text font-bold">Goal:</span> Keep our Law Library evergreen & compliant.</li>
-                            <li><span class="rcm-text font-bold">Training time:</span> 3–5 minutes</li>
-                        </ul>
-                    </div>
-                `,
-                description: `<span>This module is designed to be quick and easy. You’ll see exactly how to add LROs to the Law Library in just a few steps. Let’s get started!</span>`
-            },
-            {
-                title: "Step 1: Locate the 'Add to Library' Button",
-                screenshot: "images/alert_screen_add_to_library_arrows.png",
-                yellowBox: `<span class="direction-icon">🟡</span>When an alert's status is Became Law or Final Rule, you'll see the Add to Library button. Click it to begin adding the alert to the Law Library.<br><br>The Legal Direct Responsible Individual (DRI) determines whether an item is added to the Law Library. Unless the item already exists, the default action is to add it.`,
-                description: ``,
-            },
-            {
-                title: "Step 2: Set Workflow Status & Topics",
-                screenshot: "images/workflow_status.png",
-                yellowBox: `<span class="direction-icon">🟡</span><b>Select "Applicable"</b> for workflow status and complete Topic(s) mapping.`,
-                description: `<div style="max-width: 570px; text-align: left;">
-                
-                
-                </div>`,
-            },
-            {
-                title: "Step 3: Complete Required Metadata Fields",
-                screenshot: "images/metadata_form.png",
-                yellowBox: `<span class="direction-icon">🟡</span>Please fill out all fields for RCM:</b> Categories, Entities, Additional Information.`,
-                description: ``,
-            },
-            {
-                title: "Step 4: Assign Owners & Submit",
-                screenshot: "images/assign_owners.png",
-                yellowBox: `<span class="direction-icon">🟡</span>Assign owners for internal tracking, then click <b>Finish Adding</b> to submit.`,
-                description: `<div style="max-width: 570px;">
-                Owners can help with coverage and follow-up. Submission sends alert for RCM review.
-                </div>`,
-            },
-            {
-                title: "Step 5: Submission Success & Verification",
-                screenshot: "images/sent_for_review_tab.png",
-                yellowBox: `<span class="direction-icon">🟡</span>Check the status by navigating to <b>My Work &gt; Authority Documents &gt; Sent For Review</b> tab.`,
-                description: `<div style="max-width: 570px;">
-                The alert enters the approval queue for RCM review. You can verify its status and progress there.
-                </div>`,
-            },
-            {
-                title: "Training Complete!",
-                screenshot: "",
-                yellowBox: `<span class="direction-icon">🟡</span>You're done! This process is quick and simple—thanks for helping keep our Law Library evergreen.`,
-                description: `<div style="max-width: 570px;">
-                If you have questions or feedback, please contact the RCM Team. This training took just a few minutes, and the process itself is even faster!
-                </div>`,
-            }
-        ];
-
-        function renderStep() {
-            const step = steps[currentStep];
-            const slideContainer = document.getElementById('slide-container');
-            slideContainer.innerHTML = `
-                <div class="slide-inner">
-                    <div class="step-title">${step.title}</div>
-                    ${step.screenshot ? `
-                        <div class="screenshot-box">
-                            <img src="${step.screenshot}" class="screenshot" alt="${step.title} Screenshot">
+                <div class="flex flex-col md:flex-row md:space-x-6 space-y-6 md:space-y-0 mt-6">
+                    <div class="md:w-1/2">
+                        <p class="font-semibold text-gray-800 mb-2">Workflow Status Selection:</p>
+                        <!-- PLACEHOLDER FOR IMAGE 1: Workflow Status Radio Buttons (Unread, In Process, Applicable, Following, Excluded) -->
+                        <div class="p-4 bg-gray-100 border border-dashed border-gray-400 rounded-lg text-center text-sm italic">
+                            [IMAGE 1: Regology Workflow Status Radio Buttons]
                         </div>
-                    ` : ""}
-                    ${step.tldr ? step.tldr : ""}
-                    ${step.yellowBox && currentStep !== 0 ? `<div class="rcm-yellow-box">${step.yellowBox}</div>` : ""}
-                    <div class="description">${step.description}</div>
+                    </div>
+                    <div class="md:w-1/2">
+                        <p class="font-semibold text-gray-800 mb-2">Impact Assessment Trigger:</p>
+                        <!-- PLACEHOLDER FOR IMAGE 2: Impact Assessment Pop-up with "Create Initial Impact Assessment" button -->
+                        <div class="p-4 bg-gray-100 border border-dashed border-gray-400 rounded-lg text-center text-sm italic">
+                            [IMAGE 2: Impact Assessment Pop-up with buttons]
+                        </div>
+                    </div>
                 </div>
-            `;
-            document.getElementById('prev-btn').disabled = currentStep === 0;
-            document.getElementById('next-btn').disabled = currentStep === steps.length - 1;
-            document.getElementById('next-btn').style.display = currentStep === steps.length - 1 ? "none" : "";
-        }
+            </div>
+        </section>
 
-        function nextStep() {
-            if (currentStep < steps.length - 1) {
-                currentStep++;
-                renderStep();
-            }
-        }
-        function prevStep() {
-            if (currentStep > 0) {
-                currentStep--;
-                renderStep();
-            }
-        }
-        window.onload = renderStep;
-    </script>
+        <!-- Step 2 Section (Slide 3) -->
+        <section id="step-2" class="step-card bg-white p-6 sm:p-8 rounded-xl">
+            <h2 class="text-2xl sm:text-3xl font-bold mb-6 text-gray-800 border-b pb-3 text-indigo-700">
+                <span class="text-3xl font-extrabold mr-2">2.</span> STEP 2: Complete the Impact Assessment
+            </h2>
+            <div class="text-lg text-gray-700 space-y-4">
+                <p>
+                    The pop-up and Initial Impact Assessment screen must be completed:
+                </p>
+                <ul class="list-disc list-inside ml-4 space-y-2">
+                    <li>Select the <span class="highlight">Impacted Team</span>.</li>
+                    <li>Add a description of implementation work in the <span class="highlight">comments field</span>.</li>
+                </ul>
+
+                <div class="my-6 p-4 bg-red-100 rounded-lg shadow-inner">
+                    <p class="text-xl font-extrabold text-red-700">
+                        <span class="do-not-mark">DO NOT MARK AS CLOSED YET!</span>
+                    </p>
+                    <p class="mt-2">
+                        You will return to screen 1 - the Overview Page - for the final step.
+                    </p>
+                </div>
+
+                <p class="font-semibold text-gray-800 mt-6">Initial Impact Assessment Screen:</p>
+                <!-- PLACEHOLDER FOR IMAGE 3: Initial Impact Assessment Screen (Show: Mark as in Process crossed out, Impacted Team & Comments circled) -->
+                <div class="p-4 bg-gray-100 border border-dashed border-gray-400 rounded-lg text-center text-sm italic">
+                    [IMAGE 3: Initial Impact Assessment Screen (Ensure this image is annotated with a red line through "Mark as in Process" and a red circle around "Impacted Team" and the Comments field, as per the guide's instruction.)]
+                </div>
+            </div>
+        </section>
+
+        <!-- Step 3 Section (Slide 4) -->
+        <section id="step-3" class="step-card bg-white p-6 sm:p-8 rounded-xl">
+            <h2 class="text-2xl sm:text-3xl font-bold mb-6 text-gray-800 border-b pb-3 text-indigo-700">
+                <span class="text-3xl font-extrabold mr-2">3.</span> STEP 3: Add to Library & Metadata
+            </h2>
+            <div class="text-lg text-gray-700 space-y-4">
+                <p class="font-bold text-gray-800">
+                    Click the <span class="highlight">Add to Library</span> button.
+                </p>
+
+                <p class="mt-4">
+                    <span class="font-bold">Metadata:</span> Please include all required metadata:
+                </p>
+                <ul class="list-disc list-inside ml-4 space-y-2">
+                    <li>Select the <span class="highlight">Category</span> and <span class="highlight">Entity</span> from the dropdown fields.</li>
+                    <li>The <span class="highlight">Additional Information</span> field should only be completed if the LRO has global or extraterritorial application.</li>
+                </ul>
+
+                <p class="font-semibold text-gray-800 mt-6">Add to Library Screen:</p>
+                <!-- PLACEHOLDER FOR IMAGE 4: Screenshot showing the 'Add to Library' button and the metadata fields (Category, Entity, Additional Information) -->
+                <div class="p-4 bg-gray-100 border border-dashed border-gray-400 rounded-lg text-center text-sm italic">
+                    [IMAGE 4: Screenshot of the 'Add to Library' button clicked, revealing the Metadata fields (Category, Entity, Additional Information)]
+                </div>
+            </div>
+        </section>
+
+        <!-- Step 4 Section (Slide 5) -->
+        <section id="step-4" class="step-card bg-white p-6 sm:p-8 rounded-xl">
+            <h2 class="text-2xl sm:text-3xl font-bold mb-6 text-gray-800 border-b pb-3 text-indigo-700">
+                <span class="text-3xl font-extrabold mr-2">4.</span> Assignment & Submission
+            </h2>
+            <div class="text-lg text-gray-700 space-y-4">
+                <p>
+                    Assign <span class="highlight">Legal DRI</span> and <span class="highlight">Legal Review Team</span> for ongoing monitoring of the LRO. In most cases, this will be you and your team.
+                </p>
+                <p class="font-bold mt-4">
+                    Click <span class="highlight">Finish Adding</span> to submit.
+                </p>
+
+                <p class="font-semibold text-gray-800 mt-6">Final Assignment and Submission:</p>
+                <!-- PLACEHOLDER FOR IMAGE 5: Screenshot showing the Legal DRI, Legal Review Team fields, and the 'Finish Adding' button -->
+                <div class="p-4 bg-gray-100 border border-dashed border-gray-400 rounded-lg text-center text-sm italic">
+                    [IMAGE 5: Screenshot showing the Legal DRI, Legal Review Team fields, and the 'Finish Adding' button]
+                </div>
+
+                <div class="mt-6 p-3 bg-blue-100 border-l-4 border-blue-500 text-blue-800 rounded">
+                    <p class="font-semibold">Note:</p>
+                    <ul class="list-disc list-inside ml-4 space-y-1">
+                        <li>Submission sends the information to RCM for review.</li>
+                        <li>After this, go back to screen 2 and <span class="font-bold">Mark the Alert Closed</span>.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Conclusion Section (Slide 6) -->
+        <section id="conclusion" class="text-center py-10 bg-white shadow-lg rounded-xl mb-12">
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-green-600 mb-4">
+                You're done!
+            </h2>
+            <p class="text-xl text-gray-700 max-w-3xl mx-auto mb-6">
+                This process is quick and simple—thanks for helping keep our <span class="highlight">LRO Inventory</span> up to date.
+            </p>
+            <p class="text-lg text-gray-500">
+                If you have questions, contact the RCM team.
+            </p>
+        </section>
+    </main>
 </body>
 </html>

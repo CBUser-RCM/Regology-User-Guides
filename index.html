@@ -3,187 +3,224 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Regology User Guide: Adding LROs to the Inventory</title>
-    <!-- Load Tailwind CSS -->
+    <title>Regology Training Guide: LRO Inventory</title>
+    <!-- Load Tailwind CSS for responsive styling and utility classes -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* Custom styles for professional appearance */
+        /* Custom styles for the deep purple theme and presentation layout */
         :root {
-            --regology-blue: #2563EB; /* Tailwind blue-600 */
+            /* Deep Purple Theme */
+            --regology-primary: #5B21B6; /* Violet-700 */
+            --regology-highlight: #8B5CF6; /* Violet-500 */
+            --regology-background: #F3F4F6; /* Gray-100 */
+            --regology-error: #DC2626; /* Red-600 */
         }
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f7f7f7;
+            background-color: var(--regology-background);
+            scroll-behavior: smooth;
         }
-        .step-card {
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s ease-in-out;
+        /* Style for the "slide" containers */
+        .slide-card {
+            min-height: 100vh; /* Make it full screen height */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 3rem 1.5rem;
+            box-shadow: 0 15px 30px -5px rgba(0, 0, 0, 0.15);
+            border-left: 8px solid var(--regology-highlight);
+            scroll-margin-top: 0;
+            margin-bottom: 2rem;
+            border-radius: 1rem;
         }
-        .step-card:hover {
-            transform: translateY(-2px);
-        }
-        .highlight {
-            font-weight: 600;
-            color: var(--regology-blue);
-        }
-        .do-not-mark {
-            color: #DC2626; /* Red-600 */
+        
+        .highlight-text {
             font-weight: 700;
-            border: 2px solid #F87171;
-            padding: 4px 8px;
-            border-radius: 4px;
-            display: inline-block;
+            color: var(--regology-primary);
+        }
+        .step-header {
+            color: var(--regology-primary);
+            border-bottom: 2px solid var(--regology-highlight);
+            padding-bottom: 0.5rem;
+        }
+        .image-placeholder {
+            min-height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 500;
+            color: #7C3AED; /* Violet-500 */
+            background-color: #EDE9FE; /* Violet-100 */
+            border: 2px dashed #A78BFA; /* Violet-400 */
+            margin-top: 1rem;
+            padding: 1rem;
+            text-align: center;
+            border-radius: 0.5rem;
+        }
+        /* Custom responsive margin for the main content box */
+        .main-content {
+            max-width: 48rem;
+            margin-left: auto;
+            margin-right: auto;
         }
     </style>
 </head>
-<body class="p-4 sm:p-8">
+<body>
 
-    <!-- Header Section (Slide 1) -->
-    <header class="text-center mb-12 py-10 bg-white shadow-lg rounded-xl">
-        <h1 class="text-4xl sm:text-5xl font-extrabold text-gray-800 mb-4">
-            Adding LROs to the <span class="text-indigo-600">LRO Inventory</span>
-        </h1>
-        <p class="text-xl text-gray-600 max-w-3xl mx-auto mb-6">
-            Regology allows you to add new Legal and Regulatory Obligations (LROs) to the <span class="highlight">LRO Inventory</span> during the processing workflow.
-        </p>
-        <div class="flex justify-center space-x-6 text-lg">
-            <p class="text-green-600 font-semibold">Goal: Keep our LRO Inventory evergreen & compliant.</p>
-            <p class="text-gray-500">Training time: 3-5 minutes.</p>
-        </div>
-    </header>
+    <main class="space-y-8">
 
-    <main class="max-w-6xl mx-auto space-y-12">
+        <!-- Slide 1: Title & Goal -->
+        <section id="slide-1" class="slide-card bg-white">
+            <div class="main-content text-center">
+                <h1 class="text-5xl sm:text-6xl font-extrabold text-gray-900 mb-6">
+                    Adding LROs to the <span class="text-violet-700">LRO Inventory</span>
+                </h1>
+                <h2 class="text-xl sm:text-2xl text-gray-700 max-w-3xl mx-auto mb-8">
+                    Regology allows you to add new Legal and Regulatory Obligations (LROs) to the <span class="highlight-text">LRO Inventory</span> during the processing workflow.
+                </h2>
+                <div class="bg-violet-50 p-6 rounded-xl inline-block shadow-inner">
+                    <p class="text-lg font-semibold text-violet-800">Goal: Keep our LRO Inventory evergreen & compliant.</p>
+                    <p class="text-sm text-gray-600 mt-1">Training time: 3-5 minutes.</p>
+                </div>
+            </div>
+        </section>
 
-        <!-- Step 1 Section (Slide 2) -->
-        <section id="step-1" class="step-card bg-white p-6 sm:p-8 rounded-xl">
-            <h2 class="text-2xl sm:text-3xl font-bold mb-6 text-gray-800 border-b pb-3 text-indigo-700">
-                <span class="text-3xl font-extrabold mr-2">1.</span> STEP 1: Mark as Applicable or Following
-            </h2>
-            <div class="text-lg text-gray-700 space-y-4">
-                <p>
-                    When an alert is <span class="highlight">Became Law</span> or <span class="highlight">Final Rule</span>, you must determine if it should be added to the inventory.
+        <!-- Slide 2: Step 1 (Start) -->
+        <section id="slide-2" class="slide-card bg-white">
+            <div class="main-content">
+                <div class="flex items-center space-x-4 mb-6">
+                    <span class="text-5xl font-extrabold text-violet-700">STEP 1</span>
+                    <h2 class="text-3xl font-semibold text-gray-800 step-header">Mark as Applicable or Following</h2>
+                </div>
+                
+                <p class="text-lg text-gray-700 mb-6">
+                    When an alert is <span class="highlight-text">Became Law</span> or <span class="highlight-text">Final Rule</span>, you must determine if it should be added.
                 </p>
-                <p>
-                    <span class="font-bold">Action:</span> Select <span class="highlight">"Applicable"</span> or <span class="highlight">“Following”</span> for the workflow status. This action <span class="highlight">triggers the Impact Assessment</span>.
+
+                <p class="text-lg font-bold text-gray-800 mb-4">
+                    Action: Select <span class="text-violet-700">"Applicable"</span> or <span class="text-violet-700">“Following”</span> for the workflow status. This action <span class="underline">triggers the Impact Assessment</span>.
                 </p>
 
-                <div class="flex flex-col md:flex-row md:space-x-6 space-y-6 md:space-y-0 mt-6">
-                    <div class="md:w-1/2">
-                        <p class="font-semibold text-gray-800 mb-2">Workflow Status Selection:</p>
-                        <!-- PLACEHOLDER FOR IMAGE 1: Workflow Status Radio Buttons (Unread, In Process, Applicable, Following, Excluded) -->
-                        <div class="p-4 bg-gray-100 border border-dashed border-gray-400 rounded-lg text-center text-sm italic">
-                            [IMAGE 1: Regology Workflow Status Radio Buttons]
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="flex flex-col items-center">
+                        <p class="text-base text-gray-600 mb-2">Image 1: Select Applicable or Following</p>
+                        <div class="image-placeholder w-full h-48">
+                            
                         </div>
                     </div>
-                    <div class="md:w-1/2">
-                        <p class="font-semibold text-gray-800 mb-2">Impact Assessment Trigger:</p>
-                        <!-- PLACEHOLDER FOR IMAGE 2: Impact Assessment Pop-up with "Create Initial Impact Assessment" button -->
-                        <div class="p-4 bg-gray-100 border border-dashed border-gray-400 rounded-lg text-center text-sm italic">
-                            [IMAGE 2: Impact Assessment Pop-up with buttons]
+                    <div class="flex flex-col items-center">
+                        <p class="text-base text-gray-600 mb-2">Image 2: Impact Assessment Trigger</p>
+                        <div class="image-placeholder w-full h-48">
+                            
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Step 2 Section (Slide 3) -->
-        <section id="step-2" class="step-card bg-white p-6 sm:p-8 rounded-xl">
-            <h2 class="text-2xl sm:text-3xl font-bold mb-6 text-gray-800 border-b pb-3 text-indigo-700">
-                <span class="text-3xl font-extrabold mr-2">2.</span> STEP 2: Complete the Impact Assessment
-            </h2>
-            <div class="text-lg text-gray-700 space-y-4">
-                <p>
-                    The pop-up and Initial Impact Assessment screen must be completed:
+        <!-- Slide 3: Step 2 (The Pop-up & Impact Assessment) -->
+        <section id="slide-3" class="slide-card bg-white">
+            <div class="main-content">
+                <div class="flex items-center space-x-4 mb-6">
+                    <span class="text-5xl font-extrabold text-violet-700">STEP 2</span>
+                    <h2 class="text-3xl font-semibold text-gray-800 step-header">Complete the Impact Assessment</h2>
+                </div>
+                
+                <p class="text-lg text-gray-700 mb-6">
+                    The pop-up (Screen 2) and the **Initial Impact Assessment** must be completed.
                 </p>
-                <ul class="list-disc list-inside ml-4 space-y-2">
-                    <li>Select the <span class="highlight">Impacted Team</span>.</li>
-                    <li>Add a description of implementation work in the <span class="highlight">comments field</span>.</li>
+
+                <ul class="list-disc list-inside space-y-2 text-lg text-gray-800 pl-4 mb-6">
+                    <li>**Select team** from the dropdown field.</li>
+                    <li>**Add description** of implementation work in the comments field.</li>
                 </ul>
 
-                <div class="my-6 p-4 bg-red-100 rounded-lg shadow-inner">
-                    <p class="text-xl font-extrabold text-red-700">
-                        <span class="do-not-mark">DO NOT MARK AS CLOSED YET!</span>
-                    </p>
-                    <p class="mt-2">
-                        You will return to screen 1 - the Overview Page - for the final step.
-                    </p>
+                <div class="bg-red-500 text-white p-4 rounded-lg font-bold text-center text-xl mb-6 shadow-lg">
+                    DO NOT MARK AS CLOSED YET!
                 </div>
+                <p class="text-base text-gray-700 mb-4">
+                    *After completing the assessment, you must return to Screen 1 - the Overview Page - for the final step.*
+                </p>
 
-                <p class="font-semibold text-gray-800 mt-6">Initial Impact Assessment Screen:</p>
-                <!-- PLACEHOLDER FOR IMAGE 3: Initial Impact Assessment Screen (Show: Mark as in Process crossed out, Impacted Team & Comments circled) -->
-                <div class="p-4 bg-gray-100 border border-dashed border-gray-400 rounded-lg text-center text-sm italic">
-                    [IMAGE 3: Initial Impact Assessment Screen (Ensure this image is annotated with a red line through "Mark as in Process" and a red circle around "Impacted Team" and the Comments field, as per the guide's instruction.)]
+                <div class="image-placeholder w-full h-64">
+                    
+                    <p class="absolute bottom-2 text-sm text-red-600 font-bold">
+                        (NOTE: Image must show red line through "Mark as in Process" and red circle around "Impacted Team" and "Comments")
+                    </p>
                 </div>
             </div>
         </section>
 
-        <!-- Step 3 Section (Slide 4) -->
-        <section id="step-3" class="step-card bg-white p-6 sm:p-8 rounded-xl">
-            <h2 class="text-2xl sm:text-3xl font-bold mb-6 text-gray-800 border-b pb-3 text-indigo-700">
-                <span class="text-3xl font-extrabold mr-2">3.</span> STEP 3: Add to Library & Metadata
-            </h2>
-            <div class="text-lg text-gray-700 space-y-4">
-                <p class="font-bold text-gray-800">
-                    Click the <span class="highlight">Add to Library</span> button.
+        <!-- Slide 4: Step 3 (Add to Library & Metadata) -->
+        <section id="slide-4" class="slide-card bg-white">
+            <div class="main-content">
+                <div class="flex items-center space-x-4 mb-6">
+                    <span class="text-5xl font-extrabold text-violet-700">STEP 3</span>
+                    <h2 class="text-3xl font-semibold text-gray-800 step-header">Click the Add to Library Button</h2>
+                </div>
+                
+                <p class="text-lg text-gray-700 mb-6">
+                    Once on the Overview Page, click the <span class="highlight-text">Add to Library</span> button to begin capturing the LRO's metadata.
                 </p>
-
-                <p class="mt-4">
-                    <span class="font-bold">Metadata:</span> Please include all required metadata:
-                </p>
-                <ul class="list-disc list-inside ml-4 space-y-2">
-                    <li>Select the <span class="highlight">Category</span> and <span class="highlight">Entity</span> from the dropdown fields.</li>
-                    <li>The <span class="highlight">Additional Information</span> field should only be completed if the LRO has global or extraterritorial application.</li>
+                
+                <h3 class="text-2xl font-bold text-gray-900 mb-4">Metadata Requirements:</h3>
+                <ul class="list-disc list-inside space-y-2 text-lg text-gray-800 pl-4 mb-6">
+                    <li>**Include all required metadata.**</li>
+                    <li>Select the **Category** and **Entity** from the dropdown fields.</li>
+                    <li>The **Additional Information** field should only be completed if the LRO has **global or extraterritorial application**.</li>
                 </ul>
 
-                <p class="font-semibold text-gray-800 mt-6">Add to Library Screen:</p>
-                <!-- PLACEHOLDER FOR IMAGE 4: Screenshot showing the 'Add to Library' button and the metadata fields (Category, Entity, Additional Information) -->
-                <div class="p-4 bg-gray-100 border border-dashed border-gray-400 rounded-lg text-center text-sm italic">
-                    [IMAGE 4: Screenshot of the 'Add to Library' button clicked, revealing the Metadata fields (Category, Entity, Additional Information)]
+                <div class="image-placeholder w-full h-64">
+                    
                 </div>
             </div>
         </section>
 
-        <!-- Step 4 Section (Slide 5) -->
-        <section id="step-4" class="step-card bg-white p-6 sm:p-8 rounded-xl">
-            <h2 class="text-2xl sm:text-3xl font-bold mb-6 text-gray-800 border-b pb-3 text-indigo-700">
-                <span class="text-3xl font-extrabold mr-2">4.</span> Assignment & Submission
-            </h2>
-            <div class="text-lg text-gray-700 space-y-4">
-                <p>
-                    Assign <span class="highlight">Legal DRI</span> and <span class="highlight">Legal Review Team</span> for ongoing monitoring of the LRO. In most cases, this will be you and your team.
-                </p>
-                <p class="font-bold mt-4">
-                    Click <span class="highlight">Finish Adding</span> to submit.
-                </p>
-
-                <p class="font-semibold text-gray-800 mt-6">Final Assignment and Submission:</p>
-                <!-- PLACEHOLDER FOR IMAGE 5: Screenshot showing the Legal DRI, Legal Review Team fields, and the 'Finish Adding' button -->
-                <div class="p-4 bg-gray-100 border border-dashed border-gray-400 rounded-lg text-center text-sm italic">
-                    [IMAGE 5: Screenshot showing the Legal DRI, Legal Review Team fields, and the 'Finish Adding' button]
+        <!-- Slide 5: Assignment & Submission -->
+        <section id="slide-5" class="slide-card bg-white">
+            <div class="main-content">
+                <div class="flex items-center space-x-4 mb-6">
+                    <span class="text-5xl font-extrabold text-violet-700">STEP 4</span>
+                    <h2 class="text-3xl font-semibold text-gray-800 step-header">Assignment & Submission</h2>
                 </div>
+                
+                <p class="text-lg text-gray-700 mb-6">
+                    Assign the **Legal DRI** and **Legal Review Team** for ongoing monitoring of the LRO. In most cases, this will be you and your team.
+                </p>
 
-                <div class="mt-6 p-3 bg-blue-100 border-l-4 border-blue-500 text-blue-800 rounded">
-                    <p class="font-semibold">Note:</p>
-                    <ul class="list-disc list-inside ml-4 space-y-1">
+                <p class="text-lg font-bold text-gray-900 mb-6">
+                    Action: Click <span class="text-violet-700">Finish Adding</span> to submit the LRO to the inventory.
+                </p>
+
+                <div class="image-placeholder w-full h-48">
+                    
+                </div>
+                
+                <div class="bg-violet-100 p-4 rounded-lg mt-6 shadow-inner">
+                    <h3 class="font-bold text-violet-800">IMPORTANT NOTES:</h3>
+                    <ul class="list-disc list-inside text-sm text-violet-700 pl-4">
                         <li>Submission sends the information to RCM for review.</li>
-                        <li>After this, go back to screen 2 and <span class="font-bold">Mark the Alert Closed</span>.</li>
+                        <li>**Final Step:** Go back to Screen 2 (the Alert) and **Mark the Alert Closed**.</li>
                     </ul>
                 </div>
             </div>
         </section>
-
-        <!-- Conclusion Section (Slide 6) -->
-        <section id="conclusion" class="text-center py-10 bg-white shadow-lg rounded-xl mb-12">
-            <h2 class="text-3xl sm:text-4xl font-extrabold text-green-600 mb-4">
-                You're done!
-            </h2>
-            <p class="text-xl text-gray-700 max-w-3xl mx-auto mb-6">
-                This process is quick and simple—thanks for helping keep our <span class="highlight">LRO Inventory</span> up to date.
-            </p>
-            <p class="text-lg text-gray-500">
-                If you have questions, contact the RCM team.
-            </p>
+        
+        <!-- Slide 6: Conclusion -->
+        <section id="slide-6" class="slide-card bg-violet-700">
+            <div class="main-content text-center text-white">
+                <h2 class="text-5xl font-extrabold mb-4">You're Done!</h2>
+                <p class="text-2xl mb-8 font-light">
+                    This process is quick and simple—thanks for helping keep our <span class="font-bold">LRO Inventory</span> up to date.
+                </p>
+                
+                <div class="bg-white text-violet-800 p-6 rounded-xl inline-block shadow-2xl">
+                    <h3 class="text-lg font-semibold">Questions?</h3>
+                    <p class="text-base mt-1">Contact the RCM team for assistance.</p>
+                </div>
+            </div>
         </section>
+
     </main>
 </body>
 </html>

@@ -2,225 +2,333 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <title>An RCM Instructional Module: Regology Workflow Optimization Series</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Regology Training Guide: LRO Inventory</title>
-    <!-- Load Tailwind CSS for responsive styling and utility classes -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* Custom styles for the deep purple theme and presentation layout */
-        :root {
-            /* Deep Purple Theme */
-            --regology-primary: #5B21B6; /* Violet-700 */
-            --regology-highlight: #8B5CF6; /* Violet-500 */
-            --regology-background: #F3F4F6; /* Gray-100 */
-            --regology-error: #DC2626; /* Red-600 */
-        }
         body {
             font-family: 'Inter', sans-serif;
-            background-color: var(--regology-background);
-            scroll-behavior: smooth;
+            background: #f3f4f6;
         }
-        /* Style for the "slide" containers */
-        .slide-card {
-            min-height: 100vh; /* Make it full screen height */
+        .rcm-purple { background-color: #6A1B9A; color: #fff; }
+        .rcm-text { color: #6A1B9A; }
+        /* Custom Yellow Box for Directions */
+        .rcm-yellow-box {
+            background: #FFFDE7;
+            border-left: 5px solid #FBC02D;
+            color: #444;
+            font-size: 1rem;
+            font-weight: 500;
+            margin: 1.2rem 0 1.2rem 0;
+            padding: 1rem 1.25rem;
+            border-radius: 0.5rem;
+            text-align: left;
+        }
+        /* Custom RCM Logo styling for header */
+        .rcm-logo {
+            width: 145px;
+            height: 145px;
+            margin-right: 2.2rem;
+            border-radius: 22px;
+            background: #fff;
+            box-shadow: 0 2px 8px rgba(106,27,154,0.12);
+            flex-shrink: 0;
+        }
+        /* Container for the dynamic slide content, ensuring fixed height */
+        .slide-container {
+            min-height: 420px;
+            max-height: 420px;
             display: flex;
             flex-direction: column;
-            justify-content: center;
-            padding: 3rem 1.5rem;
-            box-shadow: 0 15px 30px -5px rgba(0, 0, 0, 0.15);
-            border-left: 8px solid var(--regology-highlight);
-            scroll-margin-top: 0;
-            margin-bottom: 2rem;
-            border-radius: 1rem;
+            align-items: stretch;
+            justify-content: flex-start;
+            padding: 0;
+            gap: 0.8rem;
         }
-        
-        .highlight-text {
-            font-weight: 700;
-            color: var(--regology-primary);
+        /* Inner slide content area */
+        .slide-inner {
+            flex: 1 1 auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: stretch;
+            padding-bottom: 32px; /* Leave room for footer */
+            padding-top: 8px;
         }
-        .step-header {
-            color: var(--regology-primary);
-            border-bottom: 2px solid var(--regology-highlight);
-            padding-bottom: 0.5rem;
-        }
-        .image-placeholder {
-            min-height: 120px;
+        /* Box to contain the screenshot placeholder */
+        .screenshot-box {
             display: flex;
             align-items: center;
             justify-content: center;
-            font-weight: 500;
-            color: #7C3AED; /* Violet-500 */
-            background-color: #EDE9FE; /* Violet-100 */
-            border: 2px dashed #A78BFA; /* Violet-400 */
-            margin-top: 1rem;
-            padding: 1rem;
-            text-align: center;
-            border-radius: 0.5rem;
+            background: #faf9fc;
+            border-radius: 10px;
+            border: 2px solid #6A1B9A33;
+            min-height: 180px;
+            max-height: 180px;
+            width: 100%;
+            margin-bottom: 0.8rem;
         }
-        /* Custom responsive margin for the main content box */
-        .main-content {
-            max-width: 48rem;
-            margin-left: auto;
-            margin-right: auto;
+        /* Styling for the screenshot image */
+        .screenshot {
+            width: 93%;
+            height: 160px;
+            object-fit: contain;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(106,27,154,0.10);
+            background: #faf9fc;
+        }
+        /* Title styling for each step */
+        .step-title {
+            font-size: 1.18rem;
+            font-weight: 700;
+            color: #6A1B9A;
+            border-bottom: 2px solid #FBC02D;
+            padding-bottom: 0.25rem;
+            margin-bottom: 0.5rem;
+            letter-spacing: 0.5px;
+            text-align: left;
+            width: 100%;
+        }
+        /* Icon for directions within yellow box */
+        .direction-icon {
+            font-size: 1.2em;
+            color: #FBC02D;
+            vertical-align: middle;
+            margin-right: 0.3em;
+        }
+        /* TL;DR/Summary box style */
+        .tldr-box {
+            background: #F3E8FF;
+            border-left: 5px solid #6A1B9A;
+            color: #4B2C6A;
+            font-size: 1rem;
+            font-weight: 500;
+            margin: 1.2rem 0;
+            padding: 1rem 1.25rem;
+            border-radius: 0.5rem;
+            width: 100%;
+            text-align: left;
+        }
+        /* General description text styling */
+        .description {
+            color: #2b2239;
+            font-size: 1rem;
+            margin-top: 0.4rem;
+            margin-bottom: 0.7rem;
+            text-align: left;
+            max-width: 620px;
+            padding-left: 8px;
+            padding-right: 8px;
+        }
+        /* Footer branding */
+        .rcm-footer {
+            font-size: 0.95rem;
+            color: #6A1B9A;
+            text-align: center;
+            margin-top: 1.2rem;
+            padding-bottom: 0.5rem;
+        }
+        /* Footer navigation container */
+        .footer-nav {
+            min-height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        /* Mobile Responsiveness */
+        @media (max-width: 700px) {
+            .slide-container {
+                min-height: 320px;
+                max-height: 320px;
+            }
+            .slide-inner {
+                padding-bottom: 24px;
+            }
+            .screenshot-box {
+                min-height: 90px;
+                max-height: 90px;
+            }
+            .screenshot {
+                height: 70px;
+            }
+            .rcm-logo {
+                width: 90px;
+                height: 90px;
+                margin-right: 1rem;
+            }
+            .footer-nav {
+                min-height: 44px;
+            }
         }
     </style>
 </head>
-<body>
+<body class="min-h-screen flex items-center justify-center p-4">
 
-    <main class="space-y-8">
+    <!-- Main Guide Container -->
+    <div id="guide-container" class="w-full max-w-xl bg-white shadow-2xl rounded-xl overflow-hidden">
 
-        <!-- Slide 1: Title & Goal -->
-        <section id="slide-1" class="slide-card bg-white">
-            <div class="main-content text-center">
-                <h1 class="text-5xl sm:text-6xl font-extrabold text-gray-900 mb-6">
-                    Adding LROs to the <span class="text-violet-700">LRO Inventory</span>
-                </h1>
-                <h2 class="text-xl sm:text-2xl text-gray-700 max-w-3xl mx-auto mb-8">
-                    Regology allows you to add new Legal and Regulatory Obligations (LROs) to the <span class="highlight-text">LRO Inventory</span> during the processing workflow.
-                </h2>
-                <div class="bg-violet-50 p-6 rounded-xl inline-block shadow-inner">
-                    <p class="text-lg font-semibold text-violet-800">Goal: Keep our LRO Inventory evergreen & compliant.</p>
-                    <p class="text-sm text-gray-600 mt-1">Training time: 3-5 minutes.</p>
-                </div>
+        <!-- Header -->
+        <header class="rcm-purple flex items-center px-6 py-6 gap-2">
+            <!-- Placeholder for RCM Logo -->
+            <img src="https://placehold.co/145x145/6A1B9A/ffffff?text=RCM+Logo" alt="RCM Logo" class="rcm-logo" id="rcm-logo-header">
+            <div>
+                <h1 class="text-2xl font-bold mb-1 tracking-tight text-left">An RCM Instructional Module</h1>
+                <h2 class="text-base font-semibold mb-1 tracking-tight text-left">Regology Workflow Optimization Series</h2>
+                <div class="text-lg font-bold text-white text-left">Adding LROs to the LRO Inventory</div>
             </div>
-        </section>
+        </header>
 
-        <!-- Slide 2: Step 1 (Start) -->
-        <section id="slide-2" class="slide-card bg-white">
-            <div class="main-content">
-                <div class="flex items-center space-x-4 mb-6">
-                    <span class="text-5xl font-extrabold text-violet-700">STEP 1</span>
-                    <h2 class="text-3xl font-semibold text-gray-800 step-header">Mark as Applicable or Following</h2>
-                </div>
-                
-                <p class="text-lg text-gray-700 mb-6">
-                    When an alert is <span class="highlight-text">Became Law</span> or <span class="highlight-text">Final Rule</span>, you must determine if it should be added.
-                </p>
+        <!-- Content Area -->
+        <main class="p-6 sm:p-8">
+            <div id="slide-container" class="slide-container">
+                <!-- Slide content will be rendered here by JavaScript -->
+            </div>
+        </main>
 
-                <p class="text-lg font-bold text-gray-800 mb-4">
-                    Action: Select <span class="text-violet-700">"Applicable"</span> or <span class="text-violet-700">“Following”</span> for the workflow status. This action <span class="underline">triggers the Impact Assessment</span>.
-                </p>
+        <!-- Footer Navigation -->
+        <footer class="footer-nav p-4 sm:p-6 border-t border-gray-200">
+            <button id="prev-btn" onclick="prevStep()" class="bg-gray-300 text-gray-800 px-5 py-2 rounded-lg font-medium shadow hover:bg-gray-400 transition" disabled>&larr; Previous</button>
+            <button id="next-btn" onclick="nextStep()" class="rcm-purple px-5 py-2 rounded-lg font-medium shadow-md hover:opacity-90 transition">Next &rarr;</button>
+        </footer>
+        <div class="rcm-footer">Regulatory Change Management (RCM) | Coinbase</div>
+    </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div class="flex flex-col items-center">
-                        <p class="text-base text-gray-600 mb-2">Image 1: Select Applicable or Following</p>
-                        <div class="image-placeholder w-full h-48">
-                            
-                        </div>
+    <script>
+        // Use a counter to track the current step index
+        let currentStep = 0;
+
+        // The array of instructional steps
+        const steps = [
+            {
+                title: "TL;DR: Why This Training?",
+                screenshot: "", // TLDR does not need a screenshot
+                yellowBox: "", // No yellow box on first slide
+                tldr: `
+                    <div class="tldr-box">
+                        <span class="font-bold">Why am I seeing this?</span>
+                        <ul class="list-disc ml-6 mt-2 mb-2">
+                            <li>Regology allows you to add new Legal and Regulatory Obligations (LROs) to the LRO Inventory during the processing workflow.</li>
+                            <li><span class="rcm-text font-bold">Goal:</span> Keep our LRO Inventory evergreen & compliant.</li>
+                            <li><span class="rcm-text font-bold">Training time:</span> 3–5 minutes</li>
+                        </ul>
                     </div>
-                    <div class="flex flex-col items-center">
-                        <p class="text-base text-gray-600 mb-2">Image 2: Impact Assessment Trigger</p>
-                        <div class="image-placeholder w-full h-48">
-                            
+                `,
+                description: `<span>Let’s get started!</span>`
+            },
+            {
+                title: "Step 1: Mark Status and Trigger Assessment",
+                // Custom HTML for side-by-side images
+                screenshot: `CUSTOM_HTML:<div class="flex justify-center items-center w-full h-[180px] p-2 gap-4">
+                    <img src="01_workflow_status.png" class="h-full max-h-[160px] w-1/2 object-contain rounded-lg shadow-md border border-gray-200" alt="Workflow Status Selection">
+                    <img src="02_impact_trigger.png" class="h-full max-h-[160px] w-1/2 object-contain rounded-lg shadow-md border border-gray-200" alt="Impact Assessment Trigger">
+                </div>`, 
+                yellowBox: `<span class="direction-icon">🟡</span>When an alert's status is Became Law or Final Rule, you must determine if it should be added.<br><br>Mark as **Applicable** or **Following**. Selecting either status triggers the Impact Assessment prompt.`,
+                description: ``,
+            },
+            {
+                title: "Step 2: Complete the Impact Assessment",
+                screenshot: "03_impact_assessment_annotated.png", // Using the uploaded file
+                yellowBox: `<span class="direction-icon">🟡</span>The pop-up and Impact Assessment on screen 2 must be completed, including the selection of the relevant team and a description of the implementation work in the comments field.<br><br>Return to screen 1 (the Overview Page) for the final step. Do not mark as closed yet.`,
+                description: `<div style="max-width: 570px; text-align: left;">
+                    
+                </div>`,
+            },
+            {
+                title: "Step 3: Click the Add to Library button",
+                screenshot: "", // Screenshot removed
+                yellowBox: `<span class="direction-icon">🟡</span>Please include all required metadata.<br><br>Select the Category and Entity from the dropdown fields.The Additional Information field should only be completed if the LRO has global or extraterritorial application.`,
+                description: ``,
+            },
+            {
+                title: "Step 4: Assignment and Submission", // Reverted title
+                screenshot: "", // Screenshot removed
+                yellowBox: `<span class="direction-icon">🟡</span>Assign Legal DRI and Legal Review Team for ongoing monitoring of the LRO. In most cases, this will be you and your team.<br><br>Click Finish Adding to submit the information to RCM for review. Then, go back to screen 2 and Mark the Alert as Closed.`,
+                description: `<div style="max-width: 570px;">
+                
+                </div>`,
+            },
+            {
+                title: "Training Complete!",
+                screenshot: "",
+                yellowBox: `<span class="direction-icon">🟡</span>You're done! This process is quick and simple—thanks for helping keep our LRO Inventory up to date.<br><br>If you have questions or feedback, please contact the RCM Team.`,
+                description: `<div style="max-width: 570px;">
+                
+                </div>`,
+            }
+        ];
+
+        // Function to render the current step's content
+        function renderStep() {
+            const step = steps[currentStep];
+            const slideContainer = document.getElementById('slide-container');
+            
+            let screenshotContent = '';
+            if (step.screenshot) {
+                if (step.screenshot.startsWith('CUSTOM_HTML:')) {
+                    // Render custom HTML directly (used for side-by-side images)
+                    screenshotContent = step.screenshot.substring('CUSTOM_HTML:'.length);
+                } else {
+                    // Standard single image rendering
+                    screenshotContent = `
+                        <div class="screenshot-box">
+                            <!-- Using uploaded file names or image placeholder URLs -->
+                            <img src="${step.screenshot}" class="screenshot" alt="${step.title} Screenshot" onerror="this.onerror=null; this.src='https://placehold.co/300x160/faf9fc/6A1B9A?text=Image+Placeholder'">
                         </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+                    `;
+                }
+            }
 
-        <!-- Slide 3: Step 2 (The Pop-up & Impact Assessment) -->
-        <section id="slide-3" class="slide-card bg-white">
-            <div class="main-content">
-                <div class="flex items-center space-x-4 mb-6">
-                    <span class="text-5xl font-extrabold text-violet-700">STEP 2</span>
-                    <h2 class="text-3xl font-semibold text-gray-800 step-header">Complete the Impact Assessment</h2>
-                </div>
-                
-                <p class="text-lg text-gray-700 mb-6">
-                    The pop-up (Screen 2) and the **Initial Impact Assessment** must be completed.
-                </p>
 
-                <ul class="list-disc list-inside space-y-2 text-lg text-gray-800 pl-4 mb-6">
-                    <li>**Select team** from the dropdown field.</li>
-                    <li>**Add description** of implementation work in the comments field.</li>
-                </ul>
-
-                <div class="bg-red-500 text-white p-4 rounded-lg font-bold text-center text-xl mb-6 shadow-lg">
-                    DO NOT MARK AS CLOSED YET!
+            // Build the HTML content for the current step
+            slideContainer.innerHTML = `
+                <div class="slide-inner">
+                    <div class="step-title">${step.title}</div>
+                    ${screenshotContent}
+                    ${step.tldr ? step.tldr : ""}
+                    <!-- Yellow box is only shown for steps 1 and up, not for the first TL;DR slide -->
+                    ${step.yellowBox && currentStep !== 0 ? `<div class="rcm-yellow-box">${step.yellowBox}</div>` : ""}
+                    <div class="description">${step.description}</div>
                 </div>
-                <p class="text-base text-gray-700 mb-4">
-                    *After completing the assessment, you must return to Screen 1 - the Overview Page - for the final step.*
-                </p>
+            `;
+            
+            // Update navigation buttons
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
 
-                <div class="image-placeholder w-full h-64">
-                    
-                    <p class="absolute bottom-2 text-sm text-red-600 font-bold">
-                        (NOTE: Image must show red line through "Mark as in Process" and red circle around "Impacted Team" and "Comments")
-                    </p>
-                </div>
-            </div>
-        </section>
+            prevBtn.disabled = currentStep === 0;
+            
+            if (currentStep === steps.length - 1) {
+                nextBtn.disabled = true;
+                nextBtn.style.display = "none";
+            } else {
+                nextBtn.disabled = false;
+                nextBtn.style.display = "";
+            }
+        }
 
-        <!-- Slide 4: Step 3 (Add to Library & Metadata) -->
-        <section id="slide-4" class="slide-card bg-white">
-            <div class="main-content">
-                <div class="flex items-center space-x-4 mb-6">
-                    <span class="text-5xl font-extrabold text-violet-700">STEP 3</span>
-                    <h2 class="text-3xl font-semibold text-gray-800 step-header">Click the Add to Library Button</h2>
-                </div>
-                
-                <p class="text-lg text-gray-700 mb-6">
-                    Once on the Overview Page, click the <span class="highlight-text">Add to Library</span> button to begin capturing the LRO's metadata.
-                </p>
-                
-                <h3 class="text-2xl font-bold text-gray-900 mb-4">Metadata Requirements:</h3>
-                <ul class="list-disc list-inside space-y-2 text-lg text-gray-800 pl-4 mb-6">
-                    <li>**Include all required metadata.**</li>
-                    <li>Select the **Category** and **Entity** from the dropdown fields.</li>
-                    <li>The **Additional Information** field should only be completed if the LRO has **global or extraterritorial application**.</li>
-                </ul>
-
-                <div class="image-placeholder w-full h-64">
-                    
-                </div>
-            </div>
-        </section>
-
-        <!-- Slide 5: Assignment & Submission -->
-        <section id="slide-5" class="slide-card bg-white">
-            <div class="main-content">
-                <div class="flex items-center space-x-4 mb-6">
-                    <span class="text-5xl font-extrabold text-violet-700">STEP 4</span>
-                    <h2 class="text-3xl font-semibold text-gray-800 step-header">Assignment & Submission</h2>
-                </div>
-                
-                <p class="text-lg text-gray-700 mb-6">
-                    Assign the **Legal DRI** and **Legal Review Team** for ongoing monitoring of the LRO. In most cases, this will be you and your team.
-                </p>
-
-                <p class="text-lg font-bold text-gray-900 mb-6">
-                    Action: Click <span class="text-violet-700">Finish Adding</span> to submit the LRO to the inventory.
-                </p>
-
-                <div class="image-placeholder w-full h-48">
-                    
-                </div>
-                
-                <div class="bg-violet-100 p-4 rounded-lg mt-6 shadow-inner">
-                    <h3 class="font-bold text-violet-800">IMPORTANT NOTES:</h3>
-                    <ul class="list-disc list-inside text-sm text-violet-700 pl-4">
-                        <li>Submission sends the information to RCM for review.</li>
-                        <li>**Final Step:** Go back to Screen 2 (the Alert) and **Mark the Alert Closed**.</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
+        // Navigate to the next step
+        function nextStep() {
+            if (currentStep < steps.length - 1) {
+                currentStep++;
+                renderStep();
+            }
+        }
         
-        <!-- Slide 6: Conclusion -->
-        <section id="slide-6" class="slide-card bg-violet-700">
-            <div class="main-content text-center text-white">
-                <h2 class="text-5xl font-extrabold mb-4">You're Done!</h2>
-                <p class="text-2xl mb-8 font-light">
-                    This process is quick and simple—thanks for helping keep our <span class="font-bold">LRO Inventory</span> up to date.
-                </p>
-                
-                <div class="bg-white text-violet-800 p-6 rounded-xl inline-block shadow-2xl">
-                    <h3 class="text-lg font-semibold">Questions?</h3>
-                    <p class="text-base mt-1">Contact the RCM team for assistance.</p>
-                </div>
-            </div>
-        </section>
+        // Navigate to the previous step
+        function prevStep() {
+            if (currentStep > 0) {
+                currentStep--;
+                renderStep();
+            }
+        }
+        
+        // Attach functions to the global scope for onclick attributes
+        window.nextStep = nextStep;
+        window.prevStep = prevStep;
 
-    </main>
+        // Initialize on window load
+        window.onload = renderStep;
+    </script>
 </body>
 </html>

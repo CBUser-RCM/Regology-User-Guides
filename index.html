@@ -170,8 +170,8 @@
 
         <!-- Header -->
         <header class="rcm-purple flex items-center px-6 py-6 gap-2">
-            <!-- Placeholder for RCM Logo -->
-            <img src="https://placehold.co/145x145/6A1B9A/ffffff?text=RCM+Logo" alt="RCM Logo" class="rcm-logo" id="rcm-logo-header">
+            <!-- RCM Logo referencing the actual file name (rcm_logo.png) -->
+            <img src="rcm_logo.png" alt="RCM Logo" class="rcm-logo" id="rcm-logo-header" onerror="this.onerror=null; this.src='https://placehold.co/145x145/6A1B9A/ffffff?text=RCM+Logo'">
             <div>
                 <h1 class="text-2xl font-bold mb-1 tracking-tight text-left">An RCM Instructional Module</h1>
                 <h2 class="text-base font-semibold mb-1 tracking-tight text-left">Regology Workflow Optimization Series</h2>
@@ -228,7 +228,8 @@
             },
             {
                 title: "Step 2: Complete the Impact Assessment",
-                screenshot: "03_impact_assessment_annotated.png", // Using the uploaded file
+                // This uses the newly provided/confirmed screenshot
+                screenshot: "03_impact_assessment_annotated.png", 
                 yellowBox: `<span class="direction-icon">🟡</span>The pop-up and Impact Assessment on screen 2 must be completed, including the selection of the relevant team and a description of the implementation work in the comments field.<br><br>Return to screen 1 (the Overview Page) for the final step. Do not mark as closed yet.`,
                 description: `<div style="max-width: 570px; text-align: left;">
                     

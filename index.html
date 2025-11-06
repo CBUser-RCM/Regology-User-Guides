@@ -170,8 +170,8 @@
 
         <!-- Header -->
         <header class="rcm-purple flex items-center px-6 py-6 gap-2">
-            <!-- RCM Logo: Updated path to include ./ -->
-            <img src="./rcm_logo.png" alt="RCM Logo" class="rcm-logo" id="rcm-logo-header" onerror="this.onerror=null; this.src='https://placehold.co/145x145/6A1B9A/ffffff?text=RCM+Logo'">
+            <!-- RCM Logo: Using specific GitHub RAW link -->
+            <img src="https://raw.githubusercontent.com/CBUser-RCM/Regology-User-Guides/8b2853091c14574ad138e2a1a9eb58650f801702/images/rcm_logo.png" alt="RCM Logo" class="rcm-logo" id="rcm-logo-header" onerror="this.onerror=null; this.src='https://placehold.co/145x145/6A1B9A/ffffff?text=RCM+Logo'">
             <div>
                 <h1 class="text-2xl font-bold mb-1 tracking-tight text-left">An RCM Instructional Module</h1>
                 <h2 class="text-base font-semibold mb-1 tracking-tight text-left">Regology Workflow Optimization Series</h2>
@@ -198,6 +198,16 @@
         // Use a counter to track the current step index
         let currentStep = 0;
 
+        // Base URL for GitHub raw content, including the commit hash and 'images/' path.
+        const GITHUB_RAW_BASE_URL = 'https://raw.githubusercontent.com/CBUser-RCM/Regology-User-Guides/8b2853091c14574ad138e2a1a9eb58650f801702/images/';
+
+        // Helper function to create the full image URL
+        const getImageUrl = (filename) => {
+            // Only prepend the base URL if a filename is provided and it's not custom HTML
+            // Note: The .replace('./', '') is a cleanup for older local paths, but kept for robustness.
+            return filename ? GITHUB_RAW_BASE_URL + filename.replace('./', '') : '';
+        };
+
         // The array of instructional steps
         const steps = [
             {
@@ -220,17 +230,17 @@
                 title: "Step 1: Mark Status and Trigger Assessment",
                 // Custom HTML for side-by-side images
                 screenshot: `CUSTOM_HTML:<div class="flex justify-center items-center w-full h-[180px] p-2 gap-4">
-                    <!-- Updated paths for image files in CUSTOM_HTML -->
-                    <img src="./01_workflow_status.png" class="h-full max-h-[160px] w-1/2 object-contain rounded-lg shadow-md border border-gray-200" alt="Workflow Status Selection">
-                    <img src="./02_impact_trigger.png" class="h-full max-h-[160px] w-1/2 object-contain rounded-lg shadow-md border border-gray-200" alt="Impact Assessment Trigger">
+                    <!-- Updated paths for image files using getImageUrl() -->
+                    <img src="${getImageUrl('01_workflow_status.png')}" class="h-full max-h-[160px] w-1/2 object-contain rounded-lg shadow-md border border-gray-200" alt="Workflow Status Selection">
+                    <img src="${getImageUrl('02_impact_trigger.png')}" class="h-full max-h-[160px] w-1/2 object-contain rounded-lg shadow-md border border-gray-200" alt="Impact Assessment Trigger">
                 </div>`, 
                 yellowBox: `<span class="direction-icon">🟡</span>When an alert's status is Became Law or Final Rule, you must determine if it should be added.<br><br>Mark as Applicable or Following. Selecting either status triggers the Impact Assessment prompt.`,
                 description: ``,
             },
             {
                 title: "Step 2: Complete the Impact Assessment",
-                // This uses the file path updated with ./
-                screenshot: "./03_impact_assessment_annotated.png", 
+                // This uses the file path updated with getImageUrl()
+                screenshot: "03_impact_assessment_annotated.png", 
                 yellowBox: `<span class="direction-icon">🟡</span>The pop-up and Impact Assessment on screen 2 must be completed, including the selection of the relevant team and a description of the implementation work in the comments field.<br><br>Return to screen 1 (the Overview Page) for the final step. Do not mark as closed yet.`,
                 description: `<div style="max-width: 570px; text-align: left;">
                     
@@ -266,21 +276,23 @@
             const slideContainer = document.getElementById('slide-container');
             
             let screenshotContent = '';
-            if (step.screenshot) {
-                if (step.screenshot.startsWith('CUSTOM_HTML:')) {
-                    // Render custom HTML directly (used for side-by-side images)
-                    screenshotContent = step.screenshot.substring('CUSTOM_HTML:'.length);
-                } else {
-                    // Standard single image rendering
-                    screenshotContent = `
-                        <div class="screenshot-box">
-                            <!-- Using uploaded file names or image placeholder URLs -->
-                            <img src="${step.screenshot}" class="screenshot" alt="${step.title} Screenshot" onerror="this.onerror=null; this.src='https://placehold.co/300x160/faf9fc/6A1B9A?text=Image+Placeholder'">
-                        </div>
-                    `;
-                }
-            }
+            
+            // Check if the screenshot is defined and not using CUSTOM_HTML
+            if (step.screenshot && !step.screenshot.startsWith('CUSTOM_HTML:')) {
+                const imageUrl = getImageUrl(step.screenshot);
 
+                // Standard single image rendering
+                screenshotContent = `
+                    <div class="screenshot-box">
+                        <!-- Image src uses the full GITHUB_RAW_BASE_URL + filename -->
+                        <img src="${imageUrl}" class="screenshot" alt="${step.title} Screenshot" onerror="this.onerror=null; this.src='https://placehold.co/300x160/faf9fc/6A1B9A?text=Image+Placeholder'">
+                    </div>
+                `;
+            } else if (step.screenshot && step.screenshot.startsWith('CUSTOM_HTML:')) {
+                // Render custom HTML directly (used for side-by-side images).
+                // Note: Image URLs are resolved inside the custom HTML string via interpolation.
+                screenshotContent = step.screenshot.substring('CUSTOM_HTML:'.length);
+            }
 
             // Build the HTML content for the current step
             slideContainer.innerHTML = `

@@ -52,8 +52,10 @@
             flex-direction: column;
             justify-content: flex-start;
             align-items: stretch;
-            padding-bottom: 32px; /* Leave room for footer */
+            /* padding-bottom: 32px; <-- REMOVED to make room for nav */
             padding-top: 8px;
+            overflow-y: auto; /* Added for content overflow */
+            overflow-x: hidden;
         }
         /* Box to contain the screenshot placeholder */
         .screenshot-box {
@@ -128,13 +130,7 @@
             margin-top: 1.2rem;
             padding-bottom: 0.5rem;
         }
-        /* Footer navigation container */
-        .footer-nav {
-            min-height: 64px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
+        /* Footer navigation container - REMOVED */
         
         /* Mobile Responsiveness */
         @media (max-width: 700px) {
@@ -143,7 +139,7 @@
                 max-height: 320px;
             }
             .slide-inner {
-                padding-bottom: 24px;
+                /* padding-bottom: 24px; <-- REMOVED */
             }
             .screenshot-box {
                 min-height: 90px;
@@ -157,9 +153,7 @@
                 height: 90px;
                 margin-right: 1rem;
             }
-            .footer-nav {
-                min-height: 44px;
-            }
+            /* .footer-nav { min-height: 44px; } <-- REMOVED */
         }
     </style>
 </head>
@@ -173,9 +167,9 @@
             <!-- RCM Logo: Using specific GitHub RAW link -->
             <img src="https://raw.githubusercontent.com/CBUser-RCM/Regology-User-Guides/8b2853091c14574ad138e2a1a9eb58650f801702/images/rcm_logo.png" alt="RCM Logo" class="rcm-logo" id="rcm-logo-header" onerror="this.onerror=null; this.src='https://placehold.co/145x145/6A1B9A/ffffff?text=RCM+Logo'">
             <div>
-                <h1 class="text-2xl font-bold mb-1 tracking-tight text-left">An RCM Instructional Module</h1>
-                <h2 class="text-base font-semibold mb-1 tracking-tight text-left">Regology Workflow Optimization Series</h2>
-                <div class="text-lg font-bold text-white text-left">Adding LROs to the LRO Inventory</div>
+                <h1 class="text-base font-semibold mb-1 tracking-tight text-left">Regology Workflow Optimization Series</h1>
+                <h2 class="text-2xl font-bold mb-1 tracking-tight text-left">An RCM Instructional Module</h2>
+                <div class="text-2xl font-bold mb-1 tracking-tight text-left">Adding LROs to the LRO Inventory</div>
             </div>
         </header>
 
@@ -186,11 +180,8 @@
             </div>
         </main>
 
-        <!-- Footer Navigation -->
-        <footer class="footer-nav p-4 sm:p-6 border-t border-gray-200">
-            <button id="prev-btn" onclick="prevStep()" class="bg-gray-300 text-gray-800 px-5 py-2 rounded-lg font-medium shadow hover:bg-gray-400 transition" disabled>&larr; Previous</button>
-            <button id="next-btn" onclick="nextStep()" class="rcm-purple px-5 py-2 rounded-lg font-medium shadow-md hover:opacity-90 transition">Next &rarr;</button>
-        </footer>
+        <!-- Footer Navigation - REMOVED from here -->
+        
         <div class="rcm-footer">Regulatory Change Management (RCM) | Coinbase</div>
     </div>
 
@@ -227,35 +218,41 @@
                 description: `<span>Let’s get started!</span>`
             },
             {
-                title: "Step 1: Mark Status and Trigger Assessment",
-                // Custom HTML for side-by-side images
-                screenshot: `CUSTOM_HTML:<div class="flex justify-center items-center w-full h-[180px] p-2 gap-4">
-                    <!-- Updated paths for image files using getImageUrl() -->
-                    <img src="${getImageUrl('01_workflow_status.png')}" class="h-full max-h-[160px] w-1/2 object-contain rounded-lg shadow-md border border-gray-200" alt="Workflow Status Selection">
-                    <img src="${getImageUrl('02_impact_trigger.png')}" class="h-full max-h-[160px] w-1/2 object-contain rounded-lg shadow-md border border-gray-200" alt="Impact Assessment Trigger">
+                title: "Start - New Step for Adding LROs",
+                // Screenshot updated to use CUSTOM_HTML with the new raw URL
+                screenshot: `CUSTOM_HTML:<div class="screenshot-box">
+                    <img src="https://raw.githubusercontent.com/CBUser-RCM/Regology-User-Guides/d29c9ee634b0a33476369fba5cb516aa19af7ddf/images/S2.png" class="screenshot" alt="Start - New Step Screenshot" onerror="this.onerror=null; this.src='https://placehold.co/300x160/faf9fc/6A1B9A?text=Image+Placeholder'">
                 </div>`, 
-                yellowBox: `<span class="direction-icon">🟡</span>When an alert's status is Became Law or Final Rule, you must determine if it should be added.<br><br>Mark as Applicable or Following. Selecting either status triggers the Impact Assessment prompt.`,
+                yellowBox: `<span class="direction-icon">🟡</span>When an alert is Became Law or Final Rule, you must determine if it should be added. Use your judgment, but, if Applicable, likely the LRO should be added.<br><br>This step comes after completing the regular Alert processing workflow. See next slides.`,
                 description: ``,
             },
             {
-                title: "Step 2: Complete the Impact Assessment",
-                // https://github.com/CBUser-RCM/Regology-User-Guides/blob/a2a89ee41bb6e67258197bd64c32b8abf9bcc776/images/03_impact_assessment_annotated.png
-                screenshot: "03_impact_assessment_annotated.png", 
-                yellowBox: `<span class="direction-icon">🟡</span>The pop-up and Impact Assessment on screen 2 must be completed, including the selection of the relevant team and a description of the implementation work in the comments field.<br><br>Return to screen 1 (the Overview Page) for the final step. Do not mark as closed yet.`,
-                description: `<div style="max-width: 570px; text-align: left;">
+                title: "Step 1: Complete the Standard Alert Processing Workflow",
+                // Screenshot updated to use CUSTOM_HTML with the new raw URL
+                screenshot: `CUSTOM_HTML:<div class="screenshot-box">
+                    <img src="https://raw.githubusercontent.com/CBUser-RCM/Regology-User-Guides/82c4537c4b357c41e3924010b0bfb0156e19a6eb/images/S3.png" class="screenshot" alt="Step 1 Screenshot" onerror="this.onerror=null; this.src='https://placehold.co/300x160/faf9fc/6A1B9A?text=Image+Placeholder'">
+                </div>`,
+                yellowBox: `<span class="direction-icon">🟡</span>First, you must complete the standard alert processing workflow.<br><br>Mark the Alert Applicable, Following, or Excluded<br><br>Respond to the pop up by indicating whether the Alert is potentially impactful<br><br>Proceed to Screen 2 and complete the Initial Impact Assessment: <br>1. Select an impacted team. <br>2. Provide a description of your proposed implementation work in the comments field. <br>3. Close the alert<br>`,
+                description: `<div style="max-width: 570px; text-align: left;"> <b>WAIT! Do not stop here. You must return to screen 1 now to add the alert to the Law Library.</b>
                     
                 </div>`,
             },
             {
-                title: "Step 3: Click the Add to Library button",
-                screenshot: "", // Screenshot removed
-                yellowBox: `<span class="direction-icon">🟡</span>Please include all required metadata.<br><br>Select the Category and Entity from the dropdown fields.The Additional Information field should only be completed if the LRO has global or extraterritorial application.`,
+                title: "Step 2: Return to First Screen to 'Add to Library'",
+                // Screenshot added
+                screenshot: `CUSTOM_HTML:<div class="screenshot-box">
+                    <img src="https://raw.githubusercontent.com/CBUser-RCM/Regology-User-Guides/35b91c656c15cb51517330f81314fa638906ee96/images/S4.png" class="screenshot" alt="Step 2 Screenshot" onerror="this.onerror=null; this.src='https://placehold.co/300x160/faf9fc/6A1B9A?text=Image+Placeholder'">
+                </div>`,
+                yellowBox: `<span class="direction-icon">🟡</span>Click the Add to Library button.<br>Please include all required metadata.<br><br>Select the Category and Entity from the dropdown fields.The Additional Information field should only be completed if the LRO has global or extraterritorial application.`,
                 description: ``,
             },
             {
-                title: "Step 4: Assignment and Submission", // Reverted title
-                screenshot: "", // Screenshot removed
-                yellowBox: `<span class="direction-icon">🟡</span>Assign Legal DRI and Legal Review Team for ongoing monitoring of the LRO. In most cases, this will be you and your team.<br><br>Click Finish Adding to submit the information to RCM for review. Then, go back to screen 2 and Mark the Alert as Closed.`,
+                title: "Step 3: Assign Owner and Submit", // Reverted title
+                // Screenshot added
+                screenshot: `CUSTOM_HTML:<div class="screenshot-box">
+                    <img src="https://raw.githubusercontent.com/CBUser-RCM/Regology-User-Guides/35b91c656c15cb51517330f81314fa638906ee96/images/S5.png" class="screenshot" alt="Step 3 Screenshot" onerror="this.onerror=null; this.src='https://placehold.co/300x160/faf9fc/6A1B9A?text=Image+Placeholder'">
+                </div>`,
+                yellowBox: `<span class="direction-icon">🟡</span>Assign Legal DRI and Legal Review Team for ongoing monitoring of the LRO. In most cases, this will be you and your team.<br><br>Click Finish Adding to submit the information to RCM for review.`,
                 description: `<div style="max-width: 570px;">
                 
                 </div>`,
@@ -294,15 +291,27 @@
                 screenshotContent = step.screenshot.substring('CUSTOM_HTML:'.length);
             }
 
+            // Create yellow box HTML with conditional styling
+            let yellowBoxHtml = '';
+            if (step.yellowBox && currentStep !== 0) {
+                // All yellow boxes now use the default rcm-yellow-box styling (1rem)
+                yellowBoxHtml = `<div class="rcm-yellow-box">${step.yellowBox}</div>`;
+            }
+
             // Build the HTML content for the current step
             slideContainer.innerHTML = `
                 <div class="slide-inner">
                     <div class="step-title">${step.title}</div>
                     ${screenshotContent}
                     ${step.tldr ? step.tldr : ""}
-                    <!-- Yellow box is only shown for steps 1 and up, not for the first TL;DR slide -->
-                    ${step.yellowBox && currentStep !== 0 ? `<div class="rcm-yellow-box">${step.yellowBox}</div>` : ""}
+                    <!-- Use the dynamically created yellow box HTML -->
+                    ${yellowBoxHtml}
                     <div class="description">${step.description}</div>
+                </div>
+                <!-- Navigation moved inside slide-container -->
+                <div class="p-4 border-t border-gray-200" style="min-height: 56px; display: flex; align-items: center; justify-content: space-between;">
+                    <button id="prev-btn" onclick="prevStep()" class="bg-gray-300 text-gray-800 px-3 py-1 rounded-md font-medium shadow text-sm hover:bg-gray-400 transition">&larr; Previous</button>
+                    <button id="next-btn" onclick="nextStep()" class="rcm-purple px-3 py-1 rounded-md font-medium shadow-md text-sm hover:opacity-90 transition">Next &rarr;</button>
                 </div>
             `;
             
@@ -310,15 +319,21 @@
             const prevBtn = document.getElementById('prev-btn');
             const nextBtn = document.getElementById('next-btn');
 
-            prevBtn.disabled = currentStep === 0;
-            
-            if (currentStep === steps.length - 1) {
-                nextBtn.disabled = true;
-                nextBtn.style.display = "none";
+            // --- UPDATED LOGIC ---
+            // Show/Hide Previous button
+            if (currentStep === 0) {
+                prevBtn.style.visibility = "hidden"; // Use visibility to keep layout
             } else {
-                nextBtn.disabled = false;
-                nextBtn.style.display = "";
+                prevBtn.style.visibility = "visible";
             }
+            
+            // Show/Hide Next button
+            if (currentStep === steps.length - 1) {
+                nextBtn.style.display = "none"; // Hide completely
+            } else {
+                nextBtn.style.display = ""; // Show
+            }
+            // --- END UPDATED LOGIC ---
         }
 
         // Navigate to the next step

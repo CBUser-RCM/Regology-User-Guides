@@ -17,7 +17,7 @@
             background: #FFFDE7;
             border-left: 5px solid #FBC02D;
             color: #444;
-            font-size: 1rem;
+            font-size: 1.125rem; /* Increased text size for visibility */
             font-weight: 500;
             margin: 1.2rem 0 1.2rem 0;
             padding: 1rem 1.25rem;
@@ -36,8 +36,8 @@
         }
         /* Container for the dynamic slide content, ensuring fixed height */
         .slide-container {
-            min-height: 650px; /* Increased height for larger images */
-            max-height: 650px;
+            min-height: 800px; /* Significantly increased overall height */
+            max-height: 800px;
             display: flex;
             flex-direction: column;
             align-items: stretch;
@@ -64,15 +64,15 @@
             background: #faf9fc;
             border-radius: 10px;
             border: 2px solid #6A1B9A33;
-            min-height: 400px; /* Increased height */
-            max-height: 400px;
+            min-height: 550px; /* Significantly increased height for screenshot box */
+            max-height: 550px;
             width: 100%;
             margin-bottom: 0.8rem;
         }
         /* Styling for the screenshot image */
         .screenshot {
             width: 98%; /* Increased width utilization */
-            height: 380px; /* Increased height */
+            height: 530px; /* Significantly increased height for image */
             object-fit: contain;
             border-radius: 10px;
             box-shadow: 0 4px 12px rgba(106,27,154,0.10);
@@ -92,7 +92,7 @@
         }
         /* Icon for directions within yellow box */
         .direction-icon {
-            font-size: 1.2em;
+            font-size: 1.3em; /* Slightly increased icon size */
             color: #FBC02D;
             vertical-align: middle;
             margin-right: 0.3em;
@@ -102,7 +102,7 @@
             background: #F3E8FF;
             border-left: 5px solid #6A1B9A;
             color: #4B2C6A;
-            font-size: 1rem;
+            font-size: 1.125rem; /* Increased text size for visibility */
             font-weight: 500;
             margin: 1.2rem 0;
             padding: 1rem 1.25rem;
@@ -113,7 +113,7 @@
         /* General description text styling */
         .description {
             color: #2b2239;
-            font-size: 1rem;
+            font-size: 1.125rem; /* Increased text size for visibility */
             margin-top: 0.4rem;
             margin-bottom: 0.7rem;
             text-align: left;
@@ -123,7 +123,7 @@
         }
         /* Footer branding */
         .rcm-footer {
-            font-size: 0.95rem;
+            font-size: 1.0rem; /* Slightly increased footer font size */
             color: #6A1B9A;
             text-align: center;
             margin-top: 1.2rem;
@@ -132,21 +132,25 @@
         /* Mobile Responsiveness */
         @media (max-width: 700px) {
             .slide-container {
-                min-height: 550px; /* Increased for mobile */
-                max-height: 550px;
+                min-height: 650px; /* Increased for mobile */
+                max-height: 650px;
             }
             .screenshot-box {
-                min-height: 280px; /* Increased for mobile */
-                max-height: 280px;
+                min-height: 350px; /* Increased for mobile */
+                max-height: 350px;
             }
             .screenshot {
-                height: 260px; /* Increased for mobile */
+                height: 330px; /* Increased for mobile */
                 width: 98%;
             }
             .rcm-logo {
                 width: 90px;
                 height: 90px;
                 margin-right: 1rem;
+            }
+            /* Adjust mobile font sizes back slightly for smaller screens */
+            .rcm-yellow-box, .tldr-box, .description {
+                font-size: 1rem;
             }
         }
     </style>
@@ -207,13 +211,13 @@
                         </ul>
                     </div>
                 `,
-                description: `<span>Let’s get started!</span>`
+                description: `<span></span>`
             },
             {
                 title: "Start - New Step for Adding LROs",
                 // Screenshot updated to use CUSTOM_HTML with the new raw URL
                 screenshot: `CUSTOM_HTML:<div class="screenshot-box">
-                    <img src="https://raw.githubusercontent.com/CBUser-RCM/Regology-User-Guides/d29c9ee634b0a33476369fba5cb516aa19af7ddf/images/S2.png" class="screenshot" alt="Start - New Step Screenshot" onerror="this.onerror=null; this.src='https://placehold.co/300x380/faf9fc/6A1B9A?text=Image+Placeholder'">
+                    <img src="https://raw.githubusercontent.com/CBUser-RCM/Regology-User-Guides/d29c9ee634b0a33476369fba5cb516aa19af7ddf/images/S2.png" class="screenshot" alt="Start - New Step Screenshot" onerror="this.onerror=null; this.src='https://placehold.co/300x530/faf9fc/6A1B9A?text=Image+Placeholder'">
                 </div>`, 
                 yellowBox: `<span class="direction-icon">🟡</span>When an alert is Became Law or Final Rule, you must determine if it should be added. Use your judgment, but, if Applicable, likely the LRO should be added.<br><br>This step comes after completing the regular Alert processing workflow. See next slides.`,
                 description: ``,
@@ -222,7 +226,7 @@
                 title: "Step 1: Complete the Standard Alert Processing Workflow",
                 // Screenshot URL corrected to use the raw GitHub link for the user-provided commit hash
                 screenshot: `CUSTOM_HTML:<div class="screenshot-box">
-                    <img src="https://raw.githubusercontent.com/CBUser-RCM/Regology-User-Guides/958c05cbcaa6bab75223211b7bc56bb26be8a404/images/S3.1.png" class="screenshot" alt="Step 1 Screenshot" onerror="this.onerror=null; this.src='https://placehold.co/300x380/faf9fc/6A1B9A?text=Image+Placeholder'">
+                    <img src="https://raw.githubusercontent.com/CBUser-RCM/Regology-User-Guides/958c05cbcaa6bab75223211b7bc56bb26be8a404/images/S3.1.png" class="screenshot" alt="Step 1 Screenshot" onerror="this.onerror=null; this.src='https://placehold.co/300x530/faf9fc/6A1B9A?text=Image+Placeholder'">
                 </div>`,
                 yellowBox: `<span class="direction-icon">🟡</span>First, you must complete the standard alert processing workflow.<br>Mark the Alert Applicable, Following, or Excluded.<br>Respond to the pop up by indicating whether the Alert is potentially impactful.<br>Proceed to Screen 2 and complete the Initial Impact Assessment:<br>1. Select an impacted team.<br>2. Provide a description of your proposed implementation work in the comments field.<br>3. Close the alert.`,
                 description: `<div style="max-width: 570px; text-align: left;"> <b>WAIT! Do not stop here. You must return to screen 1 now to add the alert to the Law Library.</b>
@@ -233,7 +237,7 @@
                 title: "Step 2: Return to First Screen to 'Add to Library'",
                 // Screenshot added
                 screenshot: `CUSTOM_HTML:<div class="screenshot-box">
-                    <img src="https://raw.githubusercontent.com/CBUser-RCM/Regology-User-Guides/35b91c656c15cb51517330f81314fa638906ee96/images/S4.png" class="screenshot" alt="Step 2 Screenshot" onerror="this.onerror=null; this.src='https://placehold.co/300x380/faf9fc/6A1B9A?text=Image+Placeholder'">
+                    <img src="https://raw.githubusercontent.com/CBUser-RCM/Regology-User-Guides/35b91c656c15cb51517330f81314fa638906ee96/images/S4.png" class="screenshot" alt="Step 2 Screenshot" onerror="this.onerror=null; this.src='https://placehold.co/300x530/faf9fc/6A1B9A?text=Image+Placeholder'">
                 </div>`,
                 yellowBox: `<span class="direction-icon">🟡</span>Click the Add to Library button.<br>Please include all required metadata.<br>Select the Category and Entity from the dropdown fields.<br>The Additional Information field should only be completed if the LRO has global or extraterritorial application.`,
                 description: ``,
@@ -242,7 +246,7 @@
                 title: "Step 3: Assign Owner and Submit", // Reverted title
                 // Screenshot added
                 screenshot: `CUSTOM_HTML:<div class="screenshot-box">
-                    <img src="https://raw.githubusercontent.com/CBUser-RCM/Regology-User-Guides/35b91c656c15cb51517330f81314fa638906ee96/images/S5.png" class="screenshot" alt="Step 3 Screenshot" onerror="this.onerror=null; this.src='https://placehold.co/300x380/faf9fc/6A1B9A?text=Image+Placeholder'">
+                    <img src="https://raw.githubusercontent.com/CBUser-RCM/Regology-User-Guides/35b91c656c15cb51517330f81314fa638906ee96/images/S5.png" class="screenshot" alt="Step 3 Screenshot" onerror="this.onerror=null; this.src='https://placehold.co/300x530/faf9fc/6A1B9A?text=Image+Placeholder'">
                 </div>`,
                 yellowBox: `<span class="direction-icon">🟡</span>Assign Legal DRI and Legal Review Team for ongoing monitoring of the LRO. In most cases, this will be you and your team.<br><br>Click Finish Adding to submit the information to RCM for review.`,
                 description: `<div style="max-width: 570px;">
@@ -274,7 +278,7 @@
                 screenshotContent = `
                     <div class="screenshot-box">
                         <!-- Image src uses the full GITHUB_RAW_BASE_URL + filename -->
-                        <img src="${imageUrl}" class="screenshot" alt="${step.title} Screenshot" onerror="this.onerror=null; this.src='https://placehold.co/300x380/faf9fc/6A1B9A?text=Image+Placeholder'">
+                        <img src="${imageUrl}" class="screenshot" alt="${step.title} Screenshot" onerror="this.onerror=null; this.src='https://placehold.co/300x530/faf9fc/6A1B9A?text=Image+Placeholder'">
                     </div>
                 `;
             } else if (step.screenshot && step.screenshot.startsWith('CUSTOM_HTML:')) {

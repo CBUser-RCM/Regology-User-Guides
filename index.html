@@ -36,8 +36,8 @@
         }
         /* Container for the dynamic slide content, ensuring fixed height */
         .slide-container {
-            min-height: 420px;
-            max-height: 420px;
+            min-height: 650px; /* Increased height for larger images */
+            max-height: 650px;
             display: flex;
             flex-direction: column;
             align-items: stretch;
@@ -52,7 +52,6 @@
             flex-direction: column;
             justify-content: flex-start;
             align-items: stretch;
-            /* padding-bottom: 32px; <-- REMOVED to make room for nav */
             padding-top: 8px;
             overflow-y: auto; /* Added for content overflow */
             overflow-x: hidden;
@@ -65,15 +64,15 @@
             background: #faf9fc;
             border-radius: 10px;
             border: 2px solid #6A1B9A33;
-            min-height: 180px;
-            max-height: 180px;
+            min-height: 400px; /* Increased height */
+            max-height: 400px;
             width: 100%;
             margin-bottom: 0.8rem;
         }
         /* Styling for the screenshot image */
         .screenshot {
-            width: 93%;
-            height: 160px;
+            width: 98%; /* Increased width utilization */
+            height: 380px; /* Increased height */
             object-fit: contain;
             border-radius: 10px;
             box-shadow: 0 4px 12px rgba(106,27,154,0.10);
@@ -130,30 +129,25 @@
             margin-top: 1.2rem;
             padding-bottom: 0.5rem;
         }
-        /* Footer navigation container - REMOVED */
-        
         /* Mobile Responsiveness */
         @media (max-width: 700px) {
             .slide-container {
-                min-height: 320px;
-                max-height: 320px;
-            }
-            .slide-inner {
-                /* padding-bottom: 24px; <-- REMOVED */
+                min-height: 550px; /* Increased for mobile */
+                max-height: 550px;
             }
             .screenshot-box {
-                min-height: 90px;
-                max-height: 90px;
+                min-height: 280px; /* Increased for mobile */
+                max-height: 280px;
             }
             .screenshot {
-                height: 70px;
+                height: 260px; /* Increased for mobile */
+                width: 98%;
             }
             .rcm-logo {
                 width: 90px;
                 height: 90px;
                 margin-right: 1rem;
             }
-            /* .footer-nav { min-height: 44px; } <-- REMOVED */
         }
     </style>
 </head>
@@ -180,8 +174,6 @@
             </div>
         </main>
 
-        <!-- Footer Navigation - REMOVED from here -->
-        
         <div class="rcm-footer">Regulatory Change Management (RCM) | Coinbase</div>
     </div>
 
@@ -221,7 +213,7 @@
                 title: "Start - New Step for Adding LROs",
                 // Screenshot updated to use CUSTOM_HTML with the new raw URL
                 screenshot: `CUSTOM_HTML:<div class="screenshot-box">
-                    <img src="https://raw.githubusercontent.com/CBUser-RCM/Regology-User-Guides/d29c9ee634b0a33476369fba5cb516aa19af7ddf/images/S2.png" class="screenshot" alt="Start - New Step Screenshot" onerror="this.onerror=null; this.src='https://placehold.co/300x160/faf9fc/6A1B9A?text=Image+Placeholder'">
+                    <img src="https://raw.githubusercontent.com/CBUser-RCM/Regology-User-Guides/d29c9ee634b0a33476369fba5cb516aa19af7ddf/images/S2.png" class="screenshot" alt="Start - New Step Screenshot" onerror="this.onerror=null; this.src='https://placehold.co/300x380/faf9fc/6A1B9A?text=Image+Placeholder'">
                 </div>`, 
                 yellowBox: `<span class="direction-icon">🟡</span>When an alert is Became Law or Final Rule, you must determine if it should be added. Use your judgment, but, if Applicable, likely the LRO should be added.<br><br>This step comes after completing the regular Alert processing workflow. See next slides.`,
                 description: ``,
@@ -230,9 +222,9 @@
                 title: "Step 1: Complete the Standard Alert Processing Workflow",
                 // Screenshot URL corrected to use the raw GitHub link for the user-provided commit hash
                 screenshot: `CUSTOM_HTML:<div class="screenshot-box">
-                    <img src="https://raw.githubusercontent.com/CBUser-RCM/Regology-User-Guides/958c05cbcaa6bab75223211b7bc56bb26be8a404/images/S3.1.png" class="screenshot" alt="Step 1 Screenshot" onerror="this.onerror=null; this.src='https://placehold.co/300x160/faf9fc/6A1B9A?text=Image+Placeholder'">
+                    <img src="https://raw.githubusercontent.com/CBUser-RCM/Regology-User-Guides/958c05cbcaa6bab75223211b7bc56bb26be8a404/images/S3.1.png" class="screenshot" alt="Step 1 Screenshot" onerror="this.onerror=null; this.src='https://placehold.co/300x380/faf9fc/6A1B9A?text=Image+Placeholder'">
                 </div>`,
-                yellowBox: `<span class="direction-icon">🟡</span>First, you must complete the standard alert processing workflow.<br><br>Mark the Alert Applicable, Following, or Excluded<br><br>Respond to the pop up by indicating whether the Alert is potentially impactful<br><br>Proceed to Screen 2 and complete the Initial Impact Assessment: <br>1. Select an impacted team. <br>2. Provide a description of your proposed implementation work in the comments field. <br>3. Close the alert<br>`,
+                yellowBox: `<span class="direction-icon">🟡</span>First, you must complete the standard alert processing workflow.<br>Mark the Alert Applicable, Following, or Excluded.<br>Respond to the pop up by indicating whether the Alert is potentially impactful.<br>Proceed to Screen 2 and complete the Initial Impact Assessment:<br>1. Select an impacted team.<br>2. Provide a description of your proposed implementation work in the comments field.<br>3. Close the alert.`,
                 description: `<div style="max-width: 570px; text-align: left;"> <b>WAIT! Do not stop here. You must return to screen 1 now to add the alert to the Law Library.</b>
                     
                 </div>`,
@@ -241,16 +233,16 @@
                 title: "Step 2: Return to First Screen to 'Add to Library'",
                 // Screenshot added
                 screenshot: `CUSTOM_HTML:<div class="screenshot-box">
-                    <img src="https://raw.githubusercontent.com/CBUser-RCM/Regology-User-Guides/35b91c656c15cb51517330f81314fa638906ee96/images/S4.png" class="screenshot" alt="Step 2 Screenshot" onerror="this.onerror=null; this.src='https://placehold.co/300x160/faf9fc/6A1B9A?text=Image+Placeholder'">
+                    <img src="https://raw.githubusercontent.com/CBUser-RCM/Regology-User-Guides/35b91c656c15cb51517330f81314fa638906ee96/images/S4.png" class="screenshot" alt="Step 2 Screenshot" onerror="this.onerror=null; this.src='https://placehold.co/300x380/faf9fc/6A1B9A?text=Image+Placeholder'">
                 </div>`,
-                yellowBox: `<span class="direction-icon">🟡</span>Click the Add to Library button.<br>Please include all required metadata.<br><br>Select the Category and Entity from the dropdown fields.The Additional Information field should only be completed if the LRO has global or extraterritorial application.`,
+                yellowBox: `<span class="direction-icon">🟡</span>Click the Add to Library button.<br>Please include all required metadata.<br>Select the Category and Entity from the dropdown fields.<br>The Additional Information field should only be completed if the LRO has global or extraterritorial application.`,
                 description: ``,
             },
             {
                 title: "Step 3: Assign Owner and Submit", // Reverted title
                 // Screenshot added
                 screenshot: `CUSTOM_HTML:<div class="screenshot-box">
-                    <img src="https://raw.githubusercontent.com/CBUser-RCM/Regology-User-Guides/35b91c656c15cb51517330f81314fa638906ee96/images/S5.png" class="screenshot" alt="Step 3 Screenshot" onerror="this.onerror=null; this.src='https://placehold.co/300x160/faf9fc/6A1B9A?text=Image+Placeholder'">
+                    <img src="https://raw.githubusercontent.com/CBUser-RCM/Regology-User-Guides/35b91c656c15cb51517330f81314fa638906ee96/images/S5.png" class="screenshot" alt="Step 3 Screenshot" onerror="this.onerror=null; this.src='https://placehold.co/300x380/faf9fc/6A1B9A?text=Image+Placeholder'">
                 </div>`,
                 yellowBox: `<span class="direction-icon">🟡</span>Assign Legal DRI and Legal Review Team for ongoing monitoring of the LRO. In most cases, this will be you and your team.<br><br>Click Finish Adding to submit the information to RCM for review.`,
                 description: `<div style="max-width: 570px;">
@@ -260,7 +252,7 @@
             {
                 title: "Training Complete!",
                 screenshot: "",
-                yellowBox: `<span class="direction-icon">🟡</span>You're done! This process is quick and simple—thanks for helping keep our LRO Inventory up to date.<br><br>If you have questions or feedback, please contact the RCM Team.`,
+                yellowBox: `<span class="direction-icon">🟡</span>You're done! This process is quick and simple—thanks for helping keep our LRO Inventory up to date.<br><br>If you have questions, contact the RCM team.`,
                 description: `<div style="max-width: 570px;">
                 
                 </div>`,
@@ -282,7 +274,7 @@
                 screenshotContent = `
                     <div class="screenshot-box">
                         <!-- Image src uses the full GITHUB_RAW_BASE_URL + filename -->
-                        <img src="${imageUrl}" class="screenshot" alt="${step.title} Screenshot" onerror="this.onerror=null; this.src='https://placehold.co/300x160/faf9fc/6A1B9A?text=Image+Placeholder'">
+                        <img src="${imageUrl}" class="screenshot" alt="${step.title} Screenshot" onerror="this.onerror=null; this.src='https://placehold.co/300x380/faf9fc/6A1B9A?text=Image+Placeholder'">
                     </div>
                 `;
             } else if (step.screenshot && step.screenshot.startsWith('CUSTOM_HTML:')) {
@@ -319,7 +311,6 @@
             const prevBtn = document.getElementById('prev-btn');
             const nextBtn = document.getElementById('next-btn');
 
-            // --- UPDATED LOGIC ---
             // Show/Hide Previous button
             if (currentStep === 0) {
                 prevBtn.style.visibility = "hidden"; // Use visibility to keep layout
@@ -333,7 +324,6 @@
             } else {
                 nextBtn.style.display = ""; // Show
             }
-            // --- END UPDATED LOGIC ---
         }
 
         // Navigate to the next step

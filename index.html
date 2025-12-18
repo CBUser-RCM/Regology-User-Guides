@@ -6,332 +6,294 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        
         body {
             font-family: 'Inter', sans-serif;
             background: #f3f4f6;
+            overflow-y: hidden; 
         }
         .rcm-purple { background-color: #6A1B9A; color: #fff; }
         .rcm-text { color: #6A1B9A; }
+        
         /* Custom Yellow Box for Directions */
         .rcm-yellow-box {
             background: #FFFDE7;
             border-left: 5px solid #FBC02D;
             color: #444;
-            font-size: 1.125rem; /* Increased text size for visibility */
+            font-size: 1rem;
             font-weight: 500;
-            margin: 1.2rem 0 1.2rem 0;
-            padding: 1rem 1.25rem;
+            margin: 0.75rem 0;
+            padding: 0.75rem 1rem;
             border-radius: 0.5rem;
             text-align: left;
         }
-        /* Custom RCM Logo styling for header */
+
+        /* Bullet styling for instructions */
+        .rcm-yellow-box ul {
+            list-style-type: disc;
+            margin-left: 1.25rem;
+            color: #333;
+        }
+        .rcm-yellow-box li {
+            margin-bottom: 0.4rem;
+        }
+        .rcm-yellow-box li:last-child {
+            margin-bottom: 0;
+        }
+        
+        /* Reduced Header Logo and Padding */
         .rcm-logo {
-            width: 145px;
-            height: 145px;
-            margin-right: 2.2rem;
-            border-radius: 22px;
+            width: 80px;
+            height: 80px;
+            margin-right: 1.5rem;
+            border-radius: 12px;
             background: #fff;
             box-shadow: 0 2px 8px rgba(106,27,154,0.12);
             flex-shrink: 0;
         }
-        /* Container for the dynamic slide content, ensuring fixed height */
+        
+        /* Adjusted Container for no-scroll layout */
         .slide-container {
-            min-height: 800px; /* Significantly increased overall height */
-            max-height: 800px;
+            height: calc(100vh - 200px); 
+            max-height: 700px;
             display: flex;
             flex-direction: column;
             align-items: stretch;
             justify-content: flex-start;
             padding: 0;
-            gap: 0.8rem;
         }
+        
         /* Inner slide content area */
         .slide-inner {
-            flex: 1 1 auto;
+            flex: 1;
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
             align-items: stretch;
-            padding-top: 8px;
-            overflow-y: auto; /* Added for content overflow */
-            overflow-x: hidden;
+            padding-top: 4px;
+            overflow-y: auto; 
         }
-        /* Box to contain the screenshot placeholder */
+        
+        /* Reduced Screenshot Dimensions */
         .screenshot-box {
             display: flex;
             align-items: center;
             justify-content: center;
             background: #faf9fc;
-            border-radius: 10px;
-            border: 2px solid #6A1B9A33;
-            min-height: 550px; /* Significantly increased height for screenshot box */
-            max-height: 550px;
+            border-radius: 8px;
+            border: 1px solid rgba(106, 27, 154, 0.2);
+            height: 380px; 
             width: 100%;
-            margin-bottom: 0.8rem;
+            margin-bottom: 0.5rem;
+            flex-shrink: 0;
         }
-        /* Styling for the screenshot image */
+        
         .screenshot {
-            width: 98%; /* Increased width utilization */
-            height: 530px; /* Significantly increased height for image */
+            max-width: 100%;
+            height: 100%;
             object-fit: contain;
-            border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(106,27,154,0.10);
+            border-radius: 8px;
             background: #faf9fc;
         }
-        /* Title styling for each step */
+        
         .step-title {
-            font-size: 1.18rem;
+            font-size: 1.1rem;
             font-weight: 700;
             color: #6A1B9A;
             border-bottom: 2px solid #FBC02D;
-            padding-bottom: 0.25rem;
+            padding-bottom: 0.2rem;
             margin-bottom: 0.5rem;
             letter-spacing: 0.5px;
             text-align: left;
             width: 100%;
         }
-        /* Icon for directions within yellow box */
-        .direction-icon {
-            font-size: 1.3em; /* Slightly increased icon size */
-            color: #FBC02D;
-            vertical-align: middle;
-            margin-right: 0.3em;
-        }
-        /* TL;DR/Summary box style */
+        
         .tldr-box {
             background: #F3E8FF;
             border-left: 5px solid #6A1B9A;
             color: #4B2C6A;
-            font-size: 1.125rem; /* Increased text size for visibility */
+            font-size: 1.05rem;
             font-weight: 500;
-            margin: 1.2rem 0;
-            padding: 1rem 1.25rem;
+            margin: 0.5rem 0;
+            padding: 0.75rem 1rem;
             border-radius: 0.5rem;
             width: 100%;
             text-align: left;
         }
-        /* General description text styling */
+        
         .description {
             color: #2b2239;
-            font-size: 1.125rem; /* Increased text size for visibility */
-            margin-top: 0.4rem;
-            margin-bottom: 0.7rem;
+            font-size: 1rem;
+            margin-top: 0.25rem;
+            margin-bottom: 0.5rem;
             text-align: left;
-            max-width: 620px;
-            padding-left: 8px;
-            padding-right: 8px;
+            max-width: 100%;
         }
-        /* Footer branding */
+        
         .rcm-footer {
-            font-size: 1.0rem; /* Slightly increased footer font size */
+            font-size: 0.85rem;
             color: #6A1B9A;
             text-align: center;
-            margin-top: 1.2rem;
-            padding-bottom: 0.5rem;
+            padding: 0.5rem 0;
+            border-top: 1px solid #eee;
         }
-        /* Mobile Responsiveness */
-        @media (max-width: 700px) {
-            .slide-container {
-                min-height: 650px; /* Increased for mobile */
-                max-height: 650px;
-            }
-            .screenshot-box {
-                min-height: 350px; /* Increased for mobile */
-                max-height: 350px;
-            }
-            .screenshot {
-                height: 330px; /* Increased for mobile */
-                width: 98%;
-            }
-            .rcm-logo {
-                width: 90px;
-                height: 90px;
-                margin-right: 1rem;
-            }
-            /* Adjust mobile font sizes back slightly for smaller screens */
-            .rcm-yellow-box, .tldr-box, .description {
-                font-size: 1rem;
-            }
+
+        @media (max-height: 800px) {
+            .screenshot-box { height: 320px; }
+            .rcm-logo { width: 60px; height: 60px; }
         }
     </style>
 </head>
-<body class="min-h-screen flex items-center justify-center p-4">
+<body class="min-h-screen flex items-center justify-center p-2 sm:p-4">
 
-    <!-- Main Guide Container -->
-    <!-- Widen the main container from max-w-3xl to max-w-7xl for maximum desktop width -->
-    <div id="guide-container" class="w-full max-w-7xl bg-white shadow-2xl rounded-xl overflow-hidden">
+    <div id="guide-container" class="w-full max-w-7xl bg-white shadow-2xl rounded-xl overflow-hidden flex flex-col" style="max-height: 95vh;">
 
         <!-- Header -->
-        <header class="rcm-purple flex items-center px-6 py-6 gap-2">
-            <!-- RCM Logo: Using specific GitHub RAW link -->
-            <img src="https://raw.githubusercontent.com/CBUser-RCM/Regology-User-Guides/8b2853091c14574ad138e2a1a9eb58650f801702/images/rcm_logo.png" alt="RCM Logo" class="rcm-logo" id="rcm-logo-header" onerror="this.onerror=null; this.src='https://placehold.co/145x145/6A1B9A/ffffff?text=RCM+Logo'">
+        <header class="rcm-purple flex items-center px-6 py-4 gap-2 flex-shrink-0">
+            <img src="https://raw.githubusercontent.com/CBUser-RCM/Regology-User-Guides/8b2853091c14574ad138e2a1a9eb58650f801702/images/rcm_logo.png" 
+                 alt="RCM Logo" class="rcm-logo" id="rcm-logo-header" 
+                 onerror="this.onerror=null; this.src='https://placehold.co/80x80/6A1B9A/ffffff?text=RCM'">
             <div>
-                <h1 class="text-base font-semibold mb-1 tracking-tight text-left">Regology Workflow Optimization Series</h1>
-                <h2 class="text-2xl font-bold mb-1 tracking-tight text-left">An RCM Instructional Module</h2>
-                <div class="text-2xl font-bold mb-1 tracking-tight text-left">Adding LROs to the LRO Inventory</div>
+                <h1 class="text-xs font-semibold mb-0 tracking-tight text-left opacity-80">Regology Workflow Optimization Series</h1>
+                <h2 class="text-xl font-bold mb-0 tracking-tight text-left leading-tight">An RCM Instructional Module</h2>
+                <div class="text-lg font-medium tracking-tight text-left text-purple-200">Adding LROs to the LRO Inventory</div>
             </div>
         </header>
 
         <!-- Content Area -->
-        <main class="p-6 sm:p-8">
+        <main class="px-6 py-4 flex-1 overflow-hidden">
             <div id="slide-container" class="slide-container">
                 <!-- Slide content will be rendered here by JavaScript -->
             </div>
         </main>
 
-        <div class="rcm-footer">Regulatory Change Management (RCM) | Coinbase</div>
+        <div class="rcm-footer flex-shrink-0">Regulatory Change Management (RCM) | Coinbase</div>
     </div>
 
     <script>
-        // Use a counter to track the current step index
         let currentStep = 0;
-
-        // Base URL for GitHub raw content, including the commit hash and 'images/' path.
         const GITHUB_RAW_BASE_URL = 'https://raw.githubusercontent.com/CBUser-RCM/Regology-User-Guides/8b2853091c14574ad138e2a1a9eb58650f801702/images/';
 
-        // Helper function to create the full image URL
-        const getImageUrl = (filename) => {
-            // Only prepend the base URL if a filename is provided and it's not custom HTML
-            // Note: The .replace('./', '') is a cleanup for older local paths, but kept for robustness.
-            return filename ? GITHUB_RAW_BASE_URL + filename.replace('./', '') : '';
-        };
-
-        // The array of instructional steps
         const steps = [
             {
                 title: "Adding LROs to the LRO Inventory",
-                screenshot: "", // TLDR does not need a screenshot
-                yellowBox: "", // No yellow box on first slide
+                screenshot: "",
+                yellowBox: "",
                 tldr: `
                     <div class="tldr-box">
-                        <span class="font-bold"></span>
-                        <ul class="list-disc ml-6 mt-2 mb-2">
+                        <ul class="list-disc ml-6 mt-1 mb-1">
                             <li>Regology allows you to add new Legal and Regulatory Obligations (LROs) to the LRO Inventory during the processing workflow.</li>
                             <li><span class="rcm-text font-bold">Goal:</span> Keep our LRO Inventory evergreen & compliant.</li>
                             <li><span class="rcm-text font-bold">Training time:</span> 3–5 minutes</li>
                         </ul>
                     </div>
                 `,
-                description: `<span></span>`
+                description: ""
             },
             {
                 title: "Start - New Step for Adding LROs",
-                // Screenshot updated to use CUSTOM_HTML with the new raw URL
                 screenshot: `CUSTOM_HTML:<div class="screenshot-box">
-                    <img src="https://raw.githubusercontent.com/CBUser-RCM/Regology-User-Guides/d29c9ee634b0a33476369fba5cb516aa19af7ddf/images/S2.png" class="screenshot" alt="Start - New Step Screenshot" onerror="this.onerror=null; this.src='https://placehold.co/300x530/faf9fc/6A1B9A?text=Image+Placeholder'">
+                    <img src="https://raw.githubusercontent.com/CBUser-RCM/Regology-User-Guides/d29c9ee634b0a33476369fba5cb516aa19af7ddf/images/S2.png" class="screenshot" alt="Start Screenshot">
                 </div>`, 
-                yellowBox: `<span class="direction-icon">🟡</span>When an alert is Became Law or Final Rule, you must determine if it should be added. Use your judgment, but, if Applicable, likely the LRO should be added.<br><br>This step comes after completing the regular Alert processing workflow. See next slides.`,
-                description: ``,
+                yellowBox: `<ul>
+                    <li>When an alert is Became Law or Final Rule, you must determine if it should be added.</li>
+                    <li>Use your judgment, but, if Applicable, likely the LRO should be added.</li>
+                    <li>This step comes after completing the regular Alert processing workflow.</li>
+                </ul>`,
+                description: "",
             },
             {
                 title: "Step 1: Complete the Standard Alert Processing Workflow",
-                // Screenshot URL corrected to use the raw GitHub link for the user-provided commit hash
                 screenshot: `CUSTOM_HTML:<div class="screenshot-box">
-                    <img src="https://raw.githubusercontent.com/CBUser-RCM/Regology-User-Guides/958c05cbcaa6bab75223211b7bc56bb26be8a404/images/S3.1.png" class="screenshot" alt="Step 1 Screenshot" onerror="this.onerror=null; this.src='https://placehold.co/300x530/faf9fc/6A1B9A?text=Image+Placeholder'">
+                    <img src="https://raw.githubusercontent.com/CBUser-RCM/Regology-User-Guides/958c05cbcaa6bab75223211b7bc56bb26be8a404/images/S3.1.png" class="screenshot" alt="Step 1 Screenshot">
                 </div>`,
-                yellowBox: `<span class="direction-icon">🟡</span>First, you must complete the standard alert processing workflow.<br>Mark the Alert Applicable, Following, or Excluded.<br>Respond to the pop up by indicating whether the Alert is potentially impactful.<br>Proceed to Screen 2 and complete the Initial Impact Assessment:<br>1. Select an impacted team.<br>2. Provide a description of your proposed implementation work in the comments field.<br>3. Close the alert.`,
-                description: `<div style="max-width: 570px; text-align: left;"> <b>WAIT! Do not stop here. You must return to screen 1 now to add the alert to the Law Library.</b>
-                    
-                </div>`,
+                yellowBox: `<ul>
+                    <li>Mark the Alert Applicable, Following, or Excluded.</li>
+                    <li>Respond to the pop up by indicating whether the Alert is potentially impactful.</li>
+                    <li>On Screen 2, select an impacted team and provide a description of proposed implementation work.</li>
+                    <li>Close the alert.</li>
+                </ul>`,
+                description: `<div class="font-bold text-red-600 mt-2">WAIT! Do not stop here. You must return to screen 1 now to add the alert to the Law Library.</div>`,
             },
             {
                 title: "Step 2: Return to First Screen to 'Add to Library'",
-                // Screenshot added
                 screenshot: `CUSTOM_HTML:<div class="screenshot-box">
-                    <img src="https://raw.githubusercontent.com/CBUser-RCM/Regology-User-Guides/35b91c656c15cb51517330f81314fa638906ee96/images/S4.png" class="screenshot" alt="Step 2 Screenshot" onerror="this.onerror=null; this.src='https://placehold.co/300x530/faf9fc/6A1B9A?text=Image+Placeholder'">
+                    <img src="https://raw.githubusercontent.com/CBUser-RCM/Regology-User-Guides/35b91c656c15cb51517330f81314fa638906ee96/images/S4.png" class="screenshot" alt="Step 2 Screenshot">
                 </div>`,
-                yellowBox: `<span class="direction-icon">🟡</span>Click the Add to Library button.<br>Please include all required metadata.<br>Select the Category and Entity from the dropdown fields.<br>The Additional Information field should only be completed if the LRO has global or extraterritorial application.`,
+                yellowBox: `<ul>
+                    <li>Click the Add to Library button.</li>
+                    <li>Please include all required metadata.</li>
+                    <li>Select the Category and Entity from the dropdown fields.</li>
+                    <li>The Additional Information field should only be completed if the LRO has global or extraterritorial application.</li>
+                </ul>`,
                 description: ``,
             },
             {
-                title: "Step 3: Assign Owner and Submit", // Reverted title
-                // Screenshot added
+                title: "Step 3: Assign Owner and Submit",
                 screenshot: `CUSTOM_HTML:<div class="screenshot-box">
-                    <img src="https://raw.githubusercontent.com/CBUser-RCM/Regology-User-Guides/35b91c656c15cb51517330f81314fa638906ee96/images/S5.png" class="screenshot" alt="Step 3 Screenshot" onerror="this.onerror=null; this.src='https://placehold.co/300x530/faf9fc/6A1B9A?text=Image+Placeholder'">
+                    <img src="https://raw.githubusercontent.com/CBUser-RCM/Regology-User-Guides/35b91c656c15cb51517330f81314fa638906ee96/images/S5.png" class="screenshot" alt="Step 3 Screenshot">
                 </div>`,
-                yellowBox: `<span class="direction-icon">🟡</span>Assign Legal DRI and Legal Review Team for ongoing monitoring of the LRO. In most cases, this will be you and your team.<br><br>Click Finish Adding to submit the information to RCM for review.`,
-                description: `<div style="max-width: 570px;">
-                
-                </div>`,
+                yellowBox: `<ul>
+                    <li>Assign Legal DRI and Legal Review Team for ongoing monitoring of the LRO.</li>
+                    <li>In most cases, this will be you and your team.</li>
+                    <li>Click Finish Adding to submit the information to RCM for review.</li>
+                </ul>`,
+                description: ``,
             },
             {
                 title: "Conclusion",
                 screenshot: "",
-                yellowBox: `<span class="direction-icon">🟡</span>You're done! This process is quick and simple—thanks for helping keep our LRO Inventory up to date.<br><br>If you have questions, contact the RCM team.`,
-                description: `<div style="max-width: 570px;">
-                
-                </div>`,
+                yellowBox: `<ul>
+                    <li>You're done! This process is quick and simple—thanks for helping keep our LRO Inventory up to date.</li>
+                    <li>If you have questions, contact the RCM team.</li>
+                </ul>`,
+                description: ``,
             }
         ];
 
-        // Function to render the current step's content
         function renderStep() {
             const step = steps[currentStep];
             const slideContainer = document.getElementById('slide-container');
             
             let screenshotContent = '';
-            
-            // Check if the screenshot is defined and not using CUSTOM_HTML
-            if (step.screenshot && !step.screenshot.startsWith('CUSTOM_HTML:')) {
-                const imageUrl = getImageUrl(step.screenshot);
-
-                // Standard single image rendering
-                screenshotContent = `
-                    <div class="screenshot-box">
-                        <!-- Image src uses the full GITHUB_RAW_BASE_URL + filename -->
-                        <img src="${imageUrl}" class="screenshot" alt="${step.title} Screenshot" onerror="this.onerror=null; this.src='https://placehold.co/300x530/faf9fc/6A1B9A?text=Image+Placeholder'">
-                    </div>
-                `;
-            } else if (step.screenshot && step.screenshot.startsWith('CUSTOM_HTML:')) {
-                // Render custom HTML directly (used for side-by-side images).
-                // Note: Image URLs are resolved inside the custom HTML string via interpolation.
-                screenshotContent = step.screenshot.substring('CUSTOM_HTML:'.length);
+            if (step.screenshot) {
+                screenshotContent = step.screenshot.startsWith('CUSTOM_HTML:') 
+                    ? step.screenshot.substring('CUSTOM_HTML:'.length)
+                    : `<div class="screenshot-box"><img src="${GITHUB_RAW_BASE_URL}${step.screenshot}" class="screenshot" alt="${step.title}"></div>`;
             }
 
-            // Create yellow box HTML with conditional styling
             let yellowBoxHtml = '';
             if (step.yellowBox && currentStep !== 0) {
-                // All yellow boxes now use the default rcm-yellow-box styling (1rem)
                 yellowBoxHtml = `<div class="rcm-yellow-box">${step.yellowBox}</div>`;
             }
 
-            // Build the HTML content for the current step
             slideContainer.innerHTML = `
                 <div class="slide-inner">
                     <div class="step-title">${step.title}</div>
                     ${screenshotContent}
                     ${step.tldr ? step.tldr : ""}
-                    <!-- Use the dynamically created yellow box HTML -->
                     ${yellowBoxHtml}
                     <div class="description">${step.description}</div>
                 </div>
-                <!-- Navigation moved inside slide-container -->
-                <div class="p-4 border-t border-gray-200" style="min-height: 56px; display: flex; align-items: center; justify-content: space-between;">
-                    <button id="prev-btn" onclick="prevStep()" class="bg-gray-300 text-gray-800 px-3 py-1 rounded-md font-medium shadow text-sm hover:bg-gray-400 transition">&larr; Previous</button>
-                    <button id="next-btn" onclick="nextStep()" class="rcm-purple px-3 py-1 rounded-md font-medium shadow-md text-sm hover:opacity-90 transition">Next &rarr;</button>
+                <div class="flex items-center justify-between py-3 px-1 border-t border-gray-100 flex-shrink-0">
+                    <button id="prev-btn" onclick="prevStep()" class="bg-gray-200 text-gray-700 px-4 py-1.5 rounded-lg font-semibold text-sm hover:bg-gray-300 transition">Back</button>
+                    <div class="text-xs text-gray-400 font-medium">Step ${currentStep + 1} of ${steps.length}</div>
+                    <button id="next-btn" onclick="nextStep()" class="rcm-purple px-6 py-1.5 rounded-lg font-semibold text-sm hover:opacity-90 transition">Next</button>
                 </div>
             `;
             
-            // Update navigation buttons
             const prevBtn = document.getElementById('prev-btn');
             const nextBtn = document.getElementById('next-btn');
 
-            // Show/Hide Previous button
-            if (currentStep === 0) {
-                prevBtn.style.visibility = "hidden"; // Use visibility to keep layout
-            } else {
-                prevBtn.style.visibility = "visible";
-            }
-            
-            // Show/Hide Next button
+            prevBtn.style.visibility = currentStep === 0 ? "hidden" : "visible";
             if (currentStep === steps.length - 1) {
-                nextBtn.style.display = "none"; // Hide completely
+                nextBtn.style.display = "none";
             } else {
-                nextBtn.style.display = ""; // Show
+                nextBtn.style.display = "";
             }
         }
 
-        // Navigate to the next step
         function nextStep() {
             if (currentStep < steps.length - 1) {
                 currentStep++;
@@ -339,7 +301,6 @@
             }
         }
         
-        // Navigate to the previous step
         function prevStep() {
             if (currentStep > 0) {
                 currentStep--;
@@ -347,11 +308,8 @@
             }
         }
         
-        // Attach functions to the global scope for onclick attributes
         window.nextStep = nextStep;
         window.prevStep = prevStep;
-
-        // Initialize on window load
         window.onload = renderStep;
     </script>
 </body>

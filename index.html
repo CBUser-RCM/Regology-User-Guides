@@ -8,10 +8,15 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
         
+        /* Increase base font size for better readability */
+        html, body {
+            font-size: 18px;
+        }
+
         body {
             font-family: 'Inter', sans-serif;
             background: #f3f4f6;
-            overflow: hidden; 
+            overflow: hidden; /* Keep no-scroll behavior as requested */
             height: 100vh;
             display: flex;
             align-items: center;
@@ -24,24 +29,24 @@
         /* Custom Yellow Box for Directions */
         .rcm-yellow-box {
             background: #FFFDE7;
-            border-left: 5px solid #FBC02D;
+            border-left: 6px solid #FBC02D;
             color: #444;
-            font-size: 0.9rem;
-            font-weight: 500;
-            margin: 0.4rem 0;
-            padding: 0.6rem 0.8rem;
-            border-radius: 0.5rem;
+            font-size: 1.05rem;
+            font-weight: 600;
+            margin: 0.5rem 0;
+            padding: 0.8rem 1rem;
+            border-radius: 0.6rem;
             text-align: left;
         }
 
         .rcm-yellow-box ul {
             list-style-type: disc;
-            margin-left: 1.25rem;
+            margin-left: 1.35rem;
             color: #333;
         }
         
         .rcm-yellow-box li {
-            margin-bottom: 0.2rem;
+            margin-bottom: 0.3rem;
         }
 
         .rcm-yellow-box li:last-child {
@@ -50,27 +55,28 @@
         
         /* Header Logo */
         .rcm-logo {
-            width: 70px;
-            height: 70px;
+            width: 90px;
+            height: 90px;
             margin-right: 1.25rem;
-            border-radius: 10px;
+            border-radius: 12px;
             background: #fff;
-            box-shadow: 0 2px 8px rgba(106,27,154,0.12);
+            box-shadow: 0 2px 12px rgba(106,27,154,0.14);
             flex-shrink: 0;
         }
         
-        /* Fixed Container for no-scroll layout */
+        /* Fixed Container for no-scroll layout
+           Increased overall size and made it responsive while remaining inside the viewport (no scroller) */
         .guide-wrapper {
             width: 100%;
-            max-width: 1000px;
-            height: 95vh;
-            max-height: 780px;
+            max-width: 1200px;       /* increased max width for better visibility */
+            height: 98vh;            /* use most of the viewport height but keep within it */
+            max-height: 920px;       /* cap to avoid overflowing very tall displays */
             background: white;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-            border-radius: 0.75rem;
+            box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.28);
+            border-radius: 0.9rem;
             display: flex;
             flex-direction: column;
-            overflow: hidden;
+            overflow: hidden;        /* ensure no scrollbars appear */
         }
         
         /* Inner slide content area */
@@ -79,21 +85,21 @@
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
-            padding: 1.25rem 1.5rem;
+            padding: 1.5rem 2.25rem; /* increased padding for readability */
             overflow: hidden; 
         }
         
-        /* Significantly Reduced Screenshot Dimensions */
+        /* Increased Screenshot Dimensions for improved visibility */
         .screenshot-box {
             display: flex;
             align-items: center;
             justify-content: center;
             background: #faf9fc;
-            border-radius: 8px;
+            border-radius: 10px;
             border: 1px solid rgba(106, 27, 154, 0.15);
-            height: 260px; 
+            height: 360px;          /* larger screenshot area */
             width: 100%;
-            margin-bottom: 0.4rem;
+            margin-bottom: 0.6rem;
             flex-shrink: 0;
         }
         
@@ -101,65 +107,82 @@
             max-width: 100%;
             height: 100%;
             object-fit: contain;
-            border-radius: 4px;
+            border-radius: 6px;
         }
         
         .step-title {
-            font-size: 1.1rem;
-            font-weight: 700;
+            font-size: 1.4rem;      /* larger title */
+            font-weight: 800;
             color: #6A1B9A;
-            border-bottom: 2px solid #FBC02D;
-            padding-bottom: 0.2rem;
-            margin-bottom: 0.5rem;
-            letter-spacing: 0.5px;
+            border-bottom: 3px solid #FBC02D;
+            padding-bottom: 0.35rem;
+            margin-bottom: 0.7rem;
+            letter-spacing: 0.6px;
             text-align: left;
             flex-shrink: 0;
         }
         
         .tldr-box {
             background: #F3E8FF;
-            border-left: 5px solid #6A1B9A;
+            border-left: 6px solid #6A1B9A;
             color: #4B2C6A;
-            font-size: 1.05rem;
-            font-weight: 500;
-            margin: 0.5rem 0;
-            padding: 0.75rem 1rem;
-            border-radius: 0.5rem;
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin: 0.6rem 0;
+            padding: 0.9rem 1.1rem;
+            border-radius: 0.6rem;
             width: 100%;
             text-align: left;
         }
         
         .description {
             color: #2b2239;
-            font-size: 0.95rem;
-            margin-top: 0.2rem;
+            font-size: 1.05rem;
+            margin-top: 0.35rem;
             flex-shrink: 0;
         }
         
         .rcm-footer {
-            font-size: 0.8rem;
+            font-size: 0.95rem;
             color: #6A1B9A;
             text-align: center;
-            padding: 0.5rem 0;
+            padding: 0.65rem 0;
             border-top: 1px solid #eee;
             background: #fff;
         }
 
-        /* Nav Buttons Area */
+        /* Nav Buttons Area - larger, easier to hit */
         .nav-area {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 0.75rem 1.5rem;
+            padding: 1rem 1.5rem;
             border-top: 1px solid #f3f4f6;
             background: #fafafa;
             flex-shrink: 0;
         }
 
+        .nav-area button {
+            font-size: 1rem;
+        }
+
+        @media (max-height: 950px) {
+            .screenshot-box { height: 300px; }
+            .guide-wrapper { height: 96vh; max-height: 820px; }
+            .rcm-logo { width: 80px; height: 80px; }
+            .step-title { font-size: 1.2rem; }
+            .tldr-box { font-size: 1.05rem; }
+            html, body { font-size: 17px; }
+        }
+
         @media (max-height: 750px) {
-            .screenshot-box { height: 200px; }
-            .guide-wrapper { height: 98vh; }
-            .rcm-logo { width: 55px; height: 55px; }
+            /* keep everything still larger than original but compact enough to fit short screens */
+            .screenshot-box { height: 240px; }
+            .guide-wrapper { height: 98vh; max-height: 760px; }
+            .rcm-logo { width: 70px; height: 70px; }
+            .step-title { font-size: 1.05rem; }
+            .tldr-box { font-size: 1rem; }
+            html, body { font-size: 16px; }
         }
     </style>
 </head>
@@ -170,11 +193,11 @@
         <header class="rcm-purple flex items-center px-6 py-3 gap-2 flex-shrink-0">
             <img src="https://raw.githubusercontent.com/CBUser-RCM/Regology-User-Guides/8b2853091c14574ad138e2a1a9eb58650f801702/images/rcm_logo.png" 
                  alt="RCM Logo" class="rcm-logo" 
-                 onerror="this.onerror=null; this.src='https://placehold.co/80x80/6A1B9A/ffffff?text=RCM'">
+                 onerror="this.onerror=null; this.src='https://placehold.co/110x110/6A1B9A/ffffff?text=RCM'">
             <div>
                 <h1 class="text-xs font-semibold mb-0 tracking-tight text-left opacity-80">Regology Workflow Optimization Series</h1>
-                <h2 class="text-xl font-bold mb-0 tracking-tight text-left leading-tight">An RCM Instructional Module</h2>
-                <div class="text-lg font-medium tracking-tight text-left text-purple-200">Adding LROs to the LRO Inventory</div>
+                <h2 class="text-2xl font-bold mb-0 tracking-tight text-left leading-tight">An RCM Instructional Module</h2>
+                <div class="text-xl font-medium tracking-tight text-left text-purple-200">Adding LROs to the LRO Inventory</div>
             </div>
         </header>
 
@@ -209,7 +232,7 @@
             {
                 title: "Start - New Step for Adding LROs",
                 screenshot: `CUSTOM_HTML:<div class="screenshot-box">
-                    <img src="https://raw.githubusercontent.com/CBUser-RCM/Regology-User-Guides/c5dde26ba652e008b85362d0806145f53053aa86/images/slide%202.png" class="screenshot" alt="Start Screenshot">
+                    <img src="https://raw.githubusercontent.com/CBUser-RCM/Regology-User-Guides/c5dde26ba652e008b85362d0806145f53053aa86/images/slide%202.png" class="screenshot" alt="Start Screenshot"[...]
                 </div>`, 
                 yellowBox: `<ul>
                     <li>When an alert is Became Law or Final Rule, you must determine if it should be added.</li>
@@ -221,7 +244,7 @@
             {
                 title: "Step 1: Complete the Standard Alert Processing Workflow",
                 screenshot: `CUSTOM_HTML:<div class="screenshot-box">
-                    <img src="https://raw.githubusercontent.com/CBUser-RCM/Regology-User-Guides/f17a4697d16f4e4bcc47e803f02b67be4101d339/images/custom_crop.png" class="screenshot" alt="Step 1 Screenshot">
+                    <img src="https://raw.githubusercontent.com/CBUser-RCM/Regology-User-Guides/f17a4697d16f4e4bcc47e803f02b67be4101d339/images/custom_crop.png" class="screenshot" alt="Step 1 Screensh[...]
                 </div>`,
                 yellowBox: `<ul>
                     <li>First, you must complete the standard alert processing workflow.</li>
@@ -301,9 +324,9 @@
                     <div class="description">${step.description}</div>
                 </div>
                 <div class="nav-area">
-                    <button id="prev-btn" onclick="prevStep()" class="bg-gray-200 text-gray-700 px-5 py-2 rounded-lg font-bold text-sm hover:bg-gray-300 transition-colors">Back</button>
+                    <button id="prev-btn" onclick="prevStep()" class="bg-gray-200 text-gray-700 px-6 py-3 rounded-lg font-bold text-sm hover:bg-gray-300 transition-colors">Back</button>
                     <div class="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Step ${currentStep + 1} of ${steps.length}</div>
-                    <button id="next-btn" onclick="nextStep()" class="rcm-purple px-8 py-2 rounded-lg font-bold text-sm hover:opacity-90 transition-opacity">Next</button>
+                    <button id="next-btn" onclick="nextStep()" class="rcm-purple px-8 py-3 rounded-lg font-bold text-sm hover:opacity-90 transition-opacity">Next</button>
                 </div>
             `;
             
